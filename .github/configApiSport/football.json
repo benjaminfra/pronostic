@@ -1,6 +1,5 @@
 {
     "columns":{
-        "sport": "sport",
         "league": "league.name",
         "date": "fixture.date",
         "team_a": "teams.home.name",
