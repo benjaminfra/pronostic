@@ -2,11 +2,10 @@
   publish = "dist/"
   command = "npm run build"
 
-[context.production]
-  command = "npm run build:prod"
+[context.production.environment]
+  NODE_ENV = "production"
+  ENV_FILE = ".env.production"
 
-[context.develop]
-  command = "npm run build:staging"
-
-[context.deploy-preview]
-  command = "npm run build:staging"
+[context.branch-deploy.environment]
+  NODE_ENV = "development"
+  ENV_FILE = ".env"
