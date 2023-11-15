@@ -17,21 +17,24 @@ const AuthProvider: React.FC<{ children: React.ReactNode }> = ({
   const [loggedUser, setLoggedUser] = useState<Profile>();
 
   useEffect(() => {
-    const fetchData = async (sessionUser: User) => {
+    const getLoggedUser: (sessionUser: User) => void = async (
+      sessionUser: User
+    ) => {
       const { data, error } = await supabase
         .from("profiles")
         .select()
         .eq("user_id", sessionUser.id)
         .single();
       if (error || !data) {
-        return;
+        throw new Error("Une erreur est survenue lors de la connexion");
       }
       setLoggedUser({ id: data.user_id, username: data.username });
     };
+
     supabase.auth.getSession().then(({ data: { session } }) => {
       if (session?.user) {
         const sessionUser: User = session.user;
-        fetchData(sessionUser);
+        getLoggedUser(sessionUser);
       }
     });
   });
