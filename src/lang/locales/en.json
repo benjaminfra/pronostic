@@ -1,0 +1,10 @@
+{
+    "Profile": {
+        "form": {
+            "username": {
+                "label": "Your username",
+                "helperText": "Others will see it"
+            }
+        }
+    }
+}

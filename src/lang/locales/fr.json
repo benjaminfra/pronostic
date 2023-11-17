@@ -1,0 +1,10 @@
+{
+    "Profile": {
+        "form": {
+            "username": {
+                "label": "Ton pseudo",
+                "helperText": "C'est celui que tout le monde verra"
+            }
+        }
+    }
+}

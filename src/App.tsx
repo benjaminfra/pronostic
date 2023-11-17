@@ -3,13 +3,13 @@ import { ThemeSupa } from "@supabase/auth-ui-shared";
 import { supabase } from "./lib/superbase";
 import { useContext } from "react";
 import { AuthContext } from "./provider/AuthProvider";
+import Profile from "./pages/profile/Profile";
 
 function App() {
   const { loggedUser } = useContext(AuthContext);
   return (
     <div>
-      <Auth supabaseClient={supabase} appearance={{ theme: ThemeSupa }} />
-      <div>ID user : {loggedUser?.id}</div>
+      <Profile user_id="toto" />
     </div>
   );
 }
