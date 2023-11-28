@@ -6,10 +6,12 @@ import { AuthContext } from "./provider/AuthProvider";
 import Profile from "./pages/profile/Profile";
 
 function App() {
-  const { loggedUser } = useContext(AuthContext);
+  const { session } = useContext(AuthContext);
+
   return (
     <div>
-      <Profile user_id="toto" />
+      <Auth supabaseClient={supabase} appearance={{ theme: ThemeSupa }} />
+      <Profile />
     </div>
   );
 }

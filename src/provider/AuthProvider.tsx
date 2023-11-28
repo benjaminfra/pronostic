@@ -22,6 +22,10 @@ const AuthProvider: React.FC<{ children: React.ReactNode }> = ({
   const [session, setSession] = useState<Session | null>();
   const [isConnected, setIsConntected] = useState<boolean>(false);
 
+  console.log("loggedUser", loggedUser);
+  console.log("session", session?.user.id);
+  console.log("isConnected", isConnected);
+
   useEffect(() => {
     const getLoggedUser: (sessionUser: User) => void = async (
       sessionUser: User
@@ -39,13 +43,19 @@ const AuthProvider: React.FC<{ children: React.ReactNode }> = ({
 
     supabase.auth.getSession().then(({ data: { session: authSession } }) => {
       if (authSession?.user) {
-        setSession(authSession);
-        setIsConntected(true);
+        if (!session || session.access_token !== authSession.access_token) {
+          setSession(authSession);
+        }
+        if (!isConnected) {
+          setIsConntected(true);
+        }
         const sessionUser: User = authSession.user;
-        getLoggedUser(sessionUser);
+        if (!loggedUser || loggedUser.id !== sessionUser.id) {
+          getLoggedUser(sessionUser);
+        }
       }
     });
-  });
+  }, [loggedUser, session, isConnected]);
 
   return (
     <AuthContext.Provider value={{ loggedUser, session, isConnected }}>

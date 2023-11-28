@@ -9,4 +9,6 @@ alter table "public"."profiles" add constraint "profiles_pkey" PRIMARY KEY using
 alter table "public"."profiles" add constraint "profiles_user_fkey" FOREIGN KEY (user_id) REFERENCES auth.users(id) not valid;
 alter table "public"."profiles" validate constraint "profiles_user_fkey";
 
-
+create policy "Profiles are viewable, editable, deletable by users who created them."
+on profiles for all
+using ( auth.uid() = user_id );
