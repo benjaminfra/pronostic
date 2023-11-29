@@ -21,6 +21,10 @@
                 "signup": {
                     "label": "S'inscrire",
                     "error": "Erreur lors de l'inscription"
+                },
+                "login": {
+                    "label": "Se connecter",
+                    "error": "Mauvaise combinaison email/mot de passe"
                 }
             }
         }

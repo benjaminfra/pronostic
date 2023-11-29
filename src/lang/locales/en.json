@@ -21,6 +21,10 @@
                 "signup": {
                     "label": "Sign Up",
                     "error": "Something went wrong on sign up"
+                },
+                "login": {
+                    "label": "Login",
+                    "error": "Credentials don't match"
                 }
             }
         }

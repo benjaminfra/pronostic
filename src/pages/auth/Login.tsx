@@ -4,30 +4,30 @@ import { AuthContext } from "@/provider/AuthProvider";
 import { useNavigate } from "react-router-dom";
 import AuthForm from "./components/AuthForm";
 
-const SignUp = () => {
-  const [signUpError, setSignUpError] = useState<boolean>(false);
-  const { signUp } = useContext(AuthContext);
+const Login = () => {
+  const [loginError, setLoginError] = useState<boolean>(false);
+  const { login } = useContext(AuthContext);
 
   const navigate = useNavigate();
   const { t } = useTranslation();
 
   const submit = async (email: string, password: string) => {
     try {
-      await signUp(email, password);
-      navigate("/confirm");
+      await login(email, password);
+      navigate("/");
     } catch (error) {
-      setSignUpError(true);
+      setLoginError(true);
     }
   };
 
   return (
     <AuthForm
-      formErrorDescription={t("Auth.form.submit.signup.error")}
-      hasFormError={signUpError}
+      formErrorDescription={t("Auth.form.submit.login.error")}
+      hasFormError={loginError}
       onSubmit={submit}
-      submitLabel={t("Auth.form.submit.signup.label")}
+      submitLabel={t("Auth.form.submit.login.label")}
     />
   );
 };
 
-export default SignUp;
+export default Login;
