@@ -6,5 +6,36 @@
                 "helperText": "Others will see it"
             }
         }
+    },
+    "Auth": {
+        "form": {
+            "email": {
+                "label": "Email",
+                "error": "Bad email format"
+            },
+            "password": {
+                "label": "Password",
+                "error": "Password must contains 8 characters"
+            },
+            "submit": {
+                "signup": {
+                    "label": "Sign Up",
+                    "error": "Something went wrong on sign up"
+                }
+            }
+        }
+    },
+    "ConfirmEmail": {
+        "description": "To validate your sign up, please follow the link in the email that you received",
+        "redirect": "Home"
+    },
+    "Error": {
+        "title": "Oops",
+        "description": "Something went wrong"
+    },
+    "common": {
+        "error": {
+            "title": "An error occured"
+        }
     }
 }

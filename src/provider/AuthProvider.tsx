@@ -6,59 +6,32 @@ import { Session, User } from "@supabase/supabase-js";
 type IAuthContext = {
   loggedUser: Profile | undefined;
   session: Session | null | undefined;
-  isConnected: boolean;
+  signUp: (email: string, password: string) => Promise<void>;
 };
 
 export const AuthContext = createContext<IAuthContext>({
   loggedUser: undefined,
-  session: null,
-  isConnected: false,
+  session: undefined,
+  signUp: async () => {},
 });
-
 const AuthProvider: React.FC<{ children: React.ReactNode }> = ({
   children,
 }) => {
   const [loggedUser, setLoggedUser] = useState<Profile | undefined>();
   const [session, setSession] = useState<Session | null>();
-  const [isConnected, setIsConntected] = useState<boolean>(false);
 
-  console.log("loggedUser", loggedUser);
-  console.log("session", session?.user.id);
-  console.log("isConnected", isConnected);
-
-  useEffect(() => {
-    const getLoggedUser: (sessionUser: User) => void = async (
-      sessionUser: User
-    ) => {
-      const { data, error } = await supabase
-        .from("profiles")
-        .select()
-        .eq("user_id", sessionUser.id)
-        .single();
-      if (error || !data) {
-        throw new Error("Une erreur est survenue lors de la connexion");
-      }
-      setLoggedUser({ id: data.user_id, username: data.username });
-    };
-
-    supabase.auth.getSession().then(({ data: { session: authSession } }) => {
-      if (authSession?.user) {
-        if (!session || session.access_token !== authSession.access_token) {
-          setSession(authSession);
-        }
-        if (!isConnected) {
-          setIsConntected(true);
-        }
-        const sessionUser: User = authSession.user;
-        if (!loggedUser || loggedUser.id !== sessionUser.id) {
-          getLoggedUser(sessionUser);
-        }
-      }
+  const signUp = async (email: string, password: string) => {
+    const { error } = await supabase.auth.signUp({
+      email,
+      password,
     });
-  }, [loggedUser, session, isConnected]);
+    if (error) {
+      throw new Error("Une erreur est survenue lors de l'inscription");
+    }
+  };
 
   return (
-    <AuthContext.Provider value={{ loggedUser, session, isConnected }}>
+    <AuthContext.Provider value={{ loggedUser, session, signUp }}>
       {children}
     </AuthContext.Provider>
   );

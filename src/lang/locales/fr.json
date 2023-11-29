@@ -6,5 +6,36 @@
                 "helperText": "C'est celui que tout le monde verra"
             }
         }
+    },
+    "Auth": {
+        "form": {
+            "email": {
+                "label": "Email",
+                "error": "L'email ne correspond pas au format attendu"
+            },
+            "password": {
+                "label": "Mot de passe",
+                "error": "Le mot de passe doit contenir au moins 8 caractères"
+            },
+            "submit": {
+                "signup": {
+                    "label": "S'inscrire",
+                    "error": "Erreur lors de l'inscription"
+                }
+            }
+        }
+    },
+    "ConfirmEmail": {
+        "description": "Pour valider votre inscription veuillez suivre le lien qui vous a été envoyé par email",
+        "redirect": "Retour à l'accueil"
+    },
+    "Error": {
+        "title": "Oops",
+        "description": "Une erreur est survenue"
+    },
+    "common": {
+        "error": {
+            "title": "Une erreur est survenue"
+        }
     }
 }
