@@ -2,19 +2,24 @@ import { createContext, useState } from "react";
 import { supabase } from "@/lib/superbase";
 import { Profile } from "@/types/users";
 import { Session, User } from "@supabase/supabase-js";
+import { generateRandomUsername } from "@/utils/ProfileUtils";
 
 type IAuthContext = {
   loggedUser: Profile | undefined;
   session: Session | null | undefined;
-  signUp: (email: string, password: string) => Promise<void>;
-  login: (email: string, password: string) => Promise<void>;
+  signUpWithRandomUsername: (email: string, password: string) => Promise<void>;
+  signIn: (email: string, password: string) => Promise<void>;
+  sendPasswordLink: (email: string) => Promise<void>;
+  updatePassword: (password: string) => Promise<void>;
 };
 
 export const AuthContext = createContext<IAuthContext>({
   loggedUser: undefined,
   session: undefined,
-  signUp: async () => {},
-  login: async () => {},
+  signUpWithRandomUsername: async () => {},
+  signIn: async () => {},
+  sendPasswordLink: async () => {},
+  updatePassword: async () => {},
 });
 const AuthProvider: React.FC<{ children: React.ReactNode }> = ({
   children,
@@ -42,17 +47,45 @@ const AuthProvider: React.FC<{ children: React.ReactNode }> = ({
     return profile;
   };
 
-  const signUp = async (email: string, password: string) => {
-    const { error } = await supabase.auth.signUp({
-      email,
-      password,
+  const sendPasswordLink = async (email: string) => {
+    const { error } = await supabase.auth.resetPasswordForEmail(email, {
+      redirectTo: window.location.origin + "/update-password",
     });
     if (error) {
-      throw new Error("Une erreur est survenue lors de l'inscription");
+      throw new Error("Une erreur est survenue");
     }
   };
 
-  const login = async (email: string, password: string) => {
+  const updatePassword = async (password: string) => {
+    const { error } = await supabase.auth.updateUser({
+      password,
+    });
+    if (error) {
+      throw new Error(
+        "Une erreur est survenue lors de la modification de l'utilisateur"
+      );
+    }
+  };
+
+  const signUpWithRandomUsername = async (email: string, password: string) => {
+    const { data, error: signUpError } = await supabase.auth.signUp({
+      email,
+      password,
+    });
+    if (signUpError || !data.user) {
+      throw new Error("Une erreur est survenue lors de l'inscription");
+    }
+
+    const { error: updateProfileError } = await supabase
+      .from("profiles")
+      .insert({ user_id: data.user.id, username: generateRandomUsername() });
+
+    if (updateProfileError) {
+      throw new Error("Une erreur est survenue lors de la création de profil");
+    }
+  };
+
+  const signIn = async (email: string, password: string) => {
     const { data, error } = await supabase.auth.signInWithPassword({
       email,
       password,
@@ -66,7 +99,16 @@ const AuthProvider: React.FC<{ children: React.ReactNode }> = ({
   };
 
   return (
-    <AuthContext.Provider value={{ loggedUser, session, signUp, login }}>
+    <AuthContext.Provider
+      value={{
+        loggedUser,
+        session,
+        signUpWithRandomUsername,
+        signIn,
+        sendPasswordLink,
+        updatePassword,
+      }}
+    >
       {children}
     </AuthContext.Provider>
   );

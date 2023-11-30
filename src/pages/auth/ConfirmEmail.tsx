@@ -8,9 +8,9 @@ const ConfirmEmail = () => {
     <>
       <Box>{t("ConfirmEmail.description")}</Box>
       <Box>
-        <Button>
-          <Link to="/">{t("ConfirmEmail.redirect")}</Link>
-        </Button>
+        <Link to="/">
+          <Button>{t("ConfirmEmail.redirect")}</Button>
+        </Link>
       </Box>
     </>
   );

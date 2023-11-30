@@ -8,8 +8,7 @@ import {
 import { useTranslation } from "react-i18next";
 import { useState } from "react";
 import ErrorAlert from "@/components/alert/ErrorAlert";
-
-const EMAIL_REGEX = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+import { EMAIL_REGEX } from "../constants/constants";
 
 type AuthFormProperties = {
   onSubmit: (email: string, password: string) => void;

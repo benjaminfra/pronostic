@@ -9,7 +9,9 @@ import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import SignUp from "./pages/auth/SignUp.tsx";
 import ErrorPage from "./pages/error/ErrorPage.tsx";
 import ConfirmEmail from "./pages/auth/ConfirmEmail.tsx";
-import Login from "./pages/auth/Login.tsx";
+import UpdatePassword from "./pages/auth/UpdatePassword.tsx";
+import SignIn from "./pages/auth/SignIn.tsx";
+import ResetPassword from "./pages/auth/ResetPassword.tsx";
 i18n;
 
 const router = createBrowserRouter([
@@ -23,12 +25,20 @@ const router = createBrowserRouter([
     element: <SignUp />,
   },
   {
-    path: "login",
-    element: <Login />,
+    path: "signin",
+    element: <SignIn />,
   },
   {
     path: "confirm",
     element: <ConfirmEmail />,
+  },
+  {
+    path: "update-password",
+    element: <UpdatePassword />,
+  },
+  {
+    path: "reset-password",
+    element: <ResetPassword />,
   },
 ]);
 

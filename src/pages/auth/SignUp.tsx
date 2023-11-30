@@ -6,14 +6,14 @@ import AuthForm from "./components/AuthForm";
 
 const SignUp = () => {
   const [signUpError, setSignUpError] = useState<boolean>(false);
-  const { signUp } = useContext(AuthContext);
+  const { signUpWithRandomUsername } = useContext(AuthContext);
 
   const navigate = useNavigate();
   const { t } = useTranslation();
 
   const submit = async (email: string, password: string) => {
     try {
-      await signUp(email, password);
+      await signUpWithRandomUsername(email, password);
       navigate("/confirm");
     } catch (error) {
       setSignUpError(true);

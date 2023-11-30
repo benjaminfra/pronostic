@@ -25,8 +25,14 @@
                 "login": {
                     "label": "Login",
                     "error": "Credentials don't match"
+                },
+                "resetPassword": {
+                    "error": "An error occured"
                 }
             }
+        },
+        "resetPassword": {
+            "link": "Don't remember my password"
         }
     },
     "ConfirmEmail": {
@@ -40,6 +46,14 @@
     "common": {
         "error": {
             "title": "An error occured"
+        },
+        "button": {
+            "update": {
+                "title": "Update"
+            },
+            "send": {
+                "title": "Send"
+            }
         }
     }
 }
