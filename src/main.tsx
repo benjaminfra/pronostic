@@ -12,6 +12,7 @@ import ConfirmEmail from "./pages/auth/ConfirmEmail.tsx";
 import UpdatePassword from "./pages/auth/UpdatePassword.tsx";
 import SignIn from "./pages/auth/SignIn.tsx";
 import ResetPassword from "./pages/auth/ResetPassword.tsx";
+import "./index.css";
 i18n;
 
 const router = createBrowserRouter([

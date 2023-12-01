@@ -1,26 +1,21 @@
-import {
-  Alert,
-  AlertIcon,
-  AlertTitle,
-  AlertDescription,
-  Box,
-} from "@chakra-ui/react";
 import { useTranslation } from "react-i18next";
+import AlertTitle from "./AlertTitle";
+import AlertDescription from "./AlertDescription";
+import AlertErrorIcon from "./AlertErrorIcon";
 
-type ErrorAlert = {
-  description: string;
-};
-
-const ErrorAlert = ({ description }: ErrorAlert) => {
+const ErrorAlert: React.FC<{ description: string }> = ({ description }) => {
   const { t } = useTranslation();
+
   return (
-    <Alert status="error" rounded="5px">
-      <AlertIcon />
-      <Box>
+    <div className="border-solid rounded bg-rose-200 px-2 py-4 flex items-center">
+      <div className="px-1" data-test="alert-icon">
+        <AlertErrorIcon />
+      </div>
+      <div className="px-1" data-test="alert-content">
         <AlertTitle>{t("common.error.title")}</AlertTitle>
         <AlertDescription>{description}</AlertDescription>
-      </Box>
-    </Alert>
+      </div>
+    </div>
   );
 };
 
