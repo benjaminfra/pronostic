@@ -26,8 +26,11 @@
                     "label": "Login",
                     "error": "Credentials don't match"
                 },
-                "resetPassword": {
-                    "error": "An error occured"
+                "updatePassword": {
+                    "error": {
+                        "default": "An error occured",
+                        "samePassword": "Password should be different from the current one"
+                    }
                 }
             }
         },
@@ -54,6 +57,7 @@
             "send": {
                 "title": "Send"
             }
-        }
+        },
+        "or": "Or"
     }
 }

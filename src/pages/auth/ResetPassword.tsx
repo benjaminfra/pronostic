@@ -28,6 +28,8 @@ const ResetPassword = () => {
     setIsOk(true);
   };
 
+  const isSubmitDisabled = email === "" || hasEmailError;
+
   const okComponent = <>toto</>;
 
   if (isOk) {
@@ -42,7 +44,9 @@ const ResetPassword = () => {
             <FormErrorMessage>{t("Auth.form.email.error")}</FormErrorMessage>
           )}
         </FormControl>
-        <Button onClick={submit}>{t("common.button.send.title")}</Button>
+        <Button onClick={submit} isDisabled={isSubmitDisabled}>
+          {t("common.button.send.title")}
+        </Button>
       </>
     );
   }

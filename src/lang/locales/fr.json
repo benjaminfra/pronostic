@@ -9,6 +9,10 @@
     },
     "Auth": {
         "form": {
+            "common": {
+                "signIn": "Se connecter",
+                "signUp": "S'inscrire"
+            },
             "email": {
                 "label": "Email",
                 "error": "L'email ne correspond pas au format attendu"
@@ -26,13 +30,16 @@
                     "label": "Se connecter",
                     "error": "Mauvaise combinaison email/mot de passe"
                 },
-                "resetPassword": {
-                    "error": "Une erreur est survenue lors de la mise à jour du mot de passe"
+                "updatePassword": {
+                    "error": {
+                        "default": "Une erreur est survenue lors de la mise à jour du mot de passe",
+                        "samePassword": "Le mot de passe ne doit pas être le même que l'actuel"
+                    }
                 }
             }
         },
         "resetPassword": {
-            "link": "Je connais plus mon mon pot de passe"
+            "link": "Mot de passe oublié ?"
         }
     },
     "ConfirmEmail": {
@@ -54,6 +61,7 @@
             "send": {
                 "title": "Envoyer"
             }
-        }
+        },
+        "or": "Ou"
     }
 }

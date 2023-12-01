@@ -1,5 +1,6 @@
 import ErrorAlert from "@/components/alert/ErrorAlert";
 import { AuthContext } from "@/provider/AuthProvider";
+import { getErrorMessage } from "@/utils/ErrorUtils";
 import {
   Button,
   FormControl,
@@ -14,7 +15,7 @@ import { useNavigate } from "react-router-dom";
 const UpdatePassword = () => {
   const [password, setPassword] = useState<string>("");
   const [hasPasswordError, setHasPasswordError] = useState<boolean>(false);
-  const [hasFormError, setHasFormError] = useState<boolean>(false);
+  const [formError, setFormError] = useState<string | undefined>();
 
   const { updatePassword } = useContext(AuthContext);
   const navigate = useNavigate();
@@ -28,18 +29,19 @@ const UpdatePassword = () => {
     try {
       await updatePassword(password);
       navigate("/signin");
-    } catch (error) {
-      setHasFormError(true);
+    } catch (error: unknown) {
+      const message = getErrorMessage(error);
+      setFormError(message);
     }
   };
 
   const { t } = useTranslation();
 
+  const isSubmitDisabled = password === "" || hasPasswordError;
+
   return (
     <>
-      {hasFormError && (
-        <ErrorAlert description={t("Auth.form.submit.resetPassword.error")} />
-      )}
+      {formError && <ErrorAlert description={formError} />}
       <FormControl>
         <FormLabel>{t("Auth.form.password.label")}</FormLabel>
         <Input
@@ -51,7 +53,9 @@ const UpdatePassword = () => {
           <FormErrorMessage>{t("Auth.form.password.error")}</FormErrorMessage>
         )}
       </FormControl>
-      <Button onClick={submit}>{t("common.button.update.title")}</Button>
+      <Button onClick={submit} isDisabled={isSubmitDisabled}>
+        {t("common.button.update.title")}
+      </Button>
     </>
   );
 };

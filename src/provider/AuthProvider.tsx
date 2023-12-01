@@ -3,6 +3,7 @@ import { supabase } from "@/lib/superbase";
 import { Profile } from "@/types/users";
 import { Session, User } from "@supabase/supabase-js";
 import { generateRandomUsername } from "@/utils/ProfileUtils";
+import i18n from "../lang";
 
 type IAuthContext = {
   loggedUser: Profile | undefined;
@@ -61,9 +62,11 @@ const AuthProvider: React.FC<{ children: React.ReactNode }> = ({
       password,
     });
     if (error) {
-      throw new Error(
-        "Une erreur est survenue lors de la modification de l'utilisateur"
-      );
+      if (error.status === 422) {
+        throw new Error(
+          i18n.t("Auth.form.submit.updatePassword.error.samePassword")
+        );
+      }
     }
   };
 
@@ -73,7 +76,7 @@ const AuthProvider: React.FC<{ children: React.ReactNode }> = ({
       password,
     });
     if (signUpError || !data.user) {
-      throw new Error("Une erreur est survenue lors de l'inscription");
+      throw new Error("An error occured during the sign up");
     }
 
     const { error: updateProfileError } = await supabase
@@ -81,7 +84,7 @@ const AuthProvider: React.FC<{ children: React.ReactNode }> = ({
       .insert({ user_id: data.user.id, username: generateRandomUsername() });
 
     if (updateProfileError) {
-      throw new Error("Une erreur est survenue lors de la création de profil");
+      throw new Error("An error occured during the profile update");
     }
   };
 
@@ -91,7 +94,7 @@ const AuthProvider: React.FC<{ children: React.ReactNode }> = ({
       password,
     });
     if (error) {
-      throw new Error("Une erreur est survenue lors de la connexion");
+      throw new Error("An error occured during the sign in");
     }
     setSession(data.session);
     const userProfile = await getLoggedUser(data.user);
