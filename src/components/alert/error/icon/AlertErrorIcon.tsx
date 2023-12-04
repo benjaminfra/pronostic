@@ -5,7 +5,8 @@ const AlertErrorIcon = () => {
         xmlns="http://www.w3.org/2000/svg"
         viewBox="0 0 24 24"
         fill="currentColor"
-        className="w-7 h-7  fill-red-700 text-white stroke-red-100 "
+        className="w-7 h-7  fill-red-700 text-white stroke-red-100"
+        data-test="alert-error-icon"
       >
         <path
           fillRule="evenodd"

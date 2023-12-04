@@ -1,4 +1,4 @@
-import ErrorAlert from "@/components/alert/ErrorAlert";
+import ErrorAlert from "@/components/alert/error/ErrorAlert";
 import { AuthContext } from "@/provider/AuthProvider";
 import { getErrorMessage } from "@/utils/ErrorUtils";
 import {

@@ -8,7 +8,7 @@ import {
 } from "@chakra-ui/react";
 import { useTranslation } from "react-i18next";
 import { useState } from "react";
-import ErrorAlert from "@/components/alert/ErrorAlert";
+import ErrorAlert from "@/components/alert/error/ErrorAlert";
 import { EMAIL_REGEX } from "../constants/constants";
 
 type AuthFormProperties = {

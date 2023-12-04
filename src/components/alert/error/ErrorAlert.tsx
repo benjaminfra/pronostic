@@ -1,7 +1,7 @@
 import { useTranslation } from "react-i18next";
-import AlertTitle from "./AlertTitle";
-import AlertDescription from "./AlertDescription";
-import AlertErrorIcon from "./AlertErrorIcon";
+import AlertTitle from "../common/AlertTitle";
+import AlertDescription from "../common/AlertDescription";
+import AlertErrorIcon from "./icon/AlertErrorIcon";
 
 const ErrorAlert: React.FC<{ description: string }> = ({ description }) => {
   const { t } = useTranslation();

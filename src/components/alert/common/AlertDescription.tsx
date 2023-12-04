@@ -3,7 +3,7 @@ const AlertDescription: React.FC<{ children: React.ReactNode }> = ({
 }) => {
   return (
     <div>
-      <p>{children}</p>
+      <p data-test="alert-description">{children}</p>
     </div>
   );
 };

@@ -5,7 +5,9 @@ type AlertTitleProps = {
 const AlertTitle = ({ children }: AlertTitleProps) => {
   return (
     <div>
-      <p className="font-bold">{children}</p>
+      <p className="font-bold" data-test="alert-title">
+        {children}
+      </p>
     </div>
   );
 };
