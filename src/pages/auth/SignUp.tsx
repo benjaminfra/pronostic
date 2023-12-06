@@ -6,7 +6,7 @@ import AuthForm from "./components/AuthForm";
 import { Box } from "@chakra-ui/react";
 import AuthLayout from "./components/AuthLayout";
 import DividerWithText from "@/components/divider/DividerWithText";
-import LinkButton from "@/components/linkButton/LinkButton";
+import LinkButton from "@/components/button/LinkButton";
 
 const SignUp = () => {
   const [signUpError, setSignUpError] = useState<boolean>(false);
@@ -40,7 +40,7 @@ const SignUp = () => {
 
       <DividerWithText text={t("common.or")} />
       <Box mt="2em" textAlign="center">
-        <LinkButton to="/signin" buttonText={t("Auth.form.common.signIn")} />
+        <LinkButton to="/signin">{t("Auth.form.common.signIn")}</LinkButton>
       </Box>
     </AuthLayout>
   );

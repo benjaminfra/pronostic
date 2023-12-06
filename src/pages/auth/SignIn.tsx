@@ -7,7 +7,7 @@ import { Link as ReactRouterLink } from "react-router-dom";
 import { Box, Link as CharkaLink } from "@chakra-ui/react";
 import AuthLayout from "./components/AuthLayout";
 import DividerWithText from "@/components/divider/DividerWithText";
-import LinkButton from "@/components/linkButton/LinkButton";
+import LinkButton from "@/components/button/LinkButton";
 
 const SignIn = () => {
   const [loginError, setLoginError] = useState<boolean>(false);
@@ -44,7 +44,7 @@ const SignIn = () => {
       </Box>
       <DividerWithText text={t("common.or")} />
       <Box mt="2em" textAlign="center">
-        <LinkButton to="/signup" buttonText={t("Auth.form.common.signUp")} />
+        <LinkButton to="/signup">{t("Auth.form.common.signUp")}</LinkButton>
       </Box>
     </AuthLayout>
   );
