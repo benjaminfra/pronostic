@@ -9,6 +9,11 @@
     },
     "Auth": {
         "form": {
+            "common": {
+                "signIn": "Sign in",
+                "signUp": "Sign up",
+                "signOut": "Sign out"
+            },
             "email": {
                 "label": "Email",
                 "error": "Bad email format"

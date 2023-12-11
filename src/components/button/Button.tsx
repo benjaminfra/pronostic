@@ -26,7 +26,7 @@ const Button: React.FC<ButtonProps> = ({
     full: "w-full",
   };
 
-  const buttonClasses = `
+  const buttonClasses = `${props.className ? props.className : ""}
       ${colorVariants[colorScheme]}
       ${sizeVariants[size]}
       text-black

@@ -12,6 +12,7 @@ type IAuthContext = {
   signIn: (email: string, password: string) => Promise<void>;
   sendPasswordLink: (email: string) => Promise<void>;
   updatePassword: (password: string) => Promise<void>;
+  signOut: () => Promise<void>;
 };
 
 export const AuthContext = createContext<IAuthContext>({
@@ -21,6 +22,7 @@ export const AuthContext = createContext<IAuthContext>({
   signIn: async () => {},
   sendPasswordLink: async () => {},
   updatePassword: async () => {},
+  signOut: async () => {},
 });
 const AuthProvider: React.FC<{ children: React.ReactNode }> = ({
   children,
@@ -101,6 +103,15 @@ const AuthProvider: React.FC<{ children: React.ReactNode }> = ({
     setLoggedUser(userProfile);
   };
 
+  const signOut = async () => {
+    const { error } = await supabase.auth.signOut();
+    if (error) {
+      throw new Error("An error occured during the sign out");
+    }
+    setSession(null);
+    setLoggedUser(undefined);
+  };
+
   return (
     <AuthContext.Provider
       value={{
@@ -110,6 +121,7 @@ const AuthProvider: React.FC<{ children: React.ReactNode }> = ({
         signIn,
         sendPasswordLink,
         updatePassword,
+        signOut,
       }}
     >
       {children}

@@ -19,26 +19,28 @@ const router = createBrowserRouter([
     path: "/",
     element: <App />,
     errorElement: <ErrorPage />,
-  },
-  {
-    path: "signup",
-    element: <SignUp />,
-  },
-  {
-    path: "signin",
-    element: <SignIn />,
-  },
-  {
-    path: "confirm",
-    element: <ConfirmEmail />,
-  },
-  {
-    path: "update-password",
-    element: <UpdatePassword />,
-  },
-  {
-    path: "reset-password",
-    element: <ResetPassword />,
+    children: [
+      {
+        path: "signup",
+        element: <SignUp />,
+      },
+      {
+        path: "signin",
+        element: <SignIn />,
+      },
+      {
+        path: "confirm",
+        element: <ConfirmEmail />,
+      },
+      {
+        path: "update-password",
+        element: <UpdatePassword />,
+      },
+      {
+        path: "reset-password",
+        element: <ResetPassword />,
+      },
+    ],
   },
 ]);
 

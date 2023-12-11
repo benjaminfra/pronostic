@@ -1,17 +1,17 @@
-import AuthForm from "@/components/auth/AuthForm";
-import AuthBox from "@/components/auth/layout/AuthBox";
+import { Outlet } from "react-router-dom";
+import { useContext } from "react";
+import Avatar from "./components/profile/Avatar";
+import { AuthContext } from "./provider/AuthProvider";
 
 const App = () => {
+  const { loggedUser } = useContext(AuthContext);
   return (
-    <AuthBox title="Se connecter">
-      <AuthForm
-        formErrorDescription="Erreur"
-        hasFormError={false}
-        onSubmit={() => {}}
-        submitLabel="Connexion"
-        isLoading={false}
-      />{" "}
-    </AuthBox>
+    <>
+      <Avatar loggedUser={loggedUser} />
+      <div>
+        <Outlet />
+      </div>
+    </>
   );
 };
 

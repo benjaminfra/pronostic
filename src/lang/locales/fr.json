@@ -11,7 +11,8 @@
         "form": {
             "common": {
                 "signIn": "Se connecter",
-                "signUp": "S'inscrire"
+                "signUp": "S'inscrire",
+                "signOut": "Me déconnecter"
             },
             "email": {
                 "label": "Email",
