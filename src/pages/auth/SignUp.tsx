@@ -2,11 +2,10 @@ import { useTranslation } from "react-i18next";
 import { useState, useContext } from "react";
 import { AuthContext } from "@/provider/AuthProvider";
 import { useNavigate } from "react-router-dom";
-import AuthForm from "./components/AuthForm";
-import { Box } from "@chakra-ui/react";
-import AuthLayout from "./components/AuthLayout";
 import DividerWithText from "@/components/divider/DividerWithText";
 import LinkButton from "@/components/button/LinkButton";
+import AuthBox from "@/components/auth/layout/AuthBox";
+import AuthForm from "@/components/auth/AuthForm";
 
 const SignUp = () => {
   const [signUpError, setSignUpError] = useState<boolean>(false);
@@ -29,7 +28,7 @@ const SignUp = () => {
   };
 
   return (
-    <AuthLayout title={t("Auth.form.common.signUp")}>
+    <AuthBox title={t("Auth.form.common.signUp")}>
       <AuthForm
         formErrorDescription={t("Auth.form.submit.signup.error")}
         hasFormError={signUpError}
@@ -39,10 +38,10 @@ const SignUp = () => {
       />
 
       <DividerWithText text={t("common.or")} />
-      <Box mt="2em" textAlign="center">
+      <div className="mt-5 text-center">
         <LinkButton to="/signin">{t("Auth.form.common.signIn")}</LinkButton>
-      </Box>
-    </AuthLayout>
+      </div>
+    </AuthBox>
   );
 };
 

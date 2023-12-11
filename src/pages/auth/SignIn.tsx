@@ -1,13 +1,11 @@
 import { useTranslation } from "react-i18next";
 import { useState, useContext } from "react";
 import { AuthContext } from "@/provider/AuthProvider";
-import { useNavigate } from "react-router-dom";
-import AuthForm from "./components/AuthForm";
-import { Link as ReactRouterLink } from "react-router-dom";
-import { Box, Link as CharkaLink } from "@chakra-ui/react";
-import AuthLayout from "./components/AuthLayout";
+import { Link, useNavigate } from "react-router-dom";
 import DividerWithText from "@/components/divider/DividerWithText";
 import LinkButton from "@/components/button/LinkButton";
+import AuthBox from "@/components/auth/layout/AuthBox";
+import AuthForm from "@/components/auth/AuthForm";
 
 const SignIn = () => {
   const [loginError, setLoginError] = useState<boolean>(false);
@@ -29,7 +27,7 @@ const SignIn = () => {
   };
 
   return (
-    <AuthLayout title={t("Auth.form.common.signIn")}>
+    <AuthBox title={t("Auth.form.common.signIn")}>
       <AuthForm
         formErrorDescription={t("Auth.form.submit.login.error")}
         hasFormError={loginError}
@@ -37,16 +35,16 @@ const SignIn = () => {
         submitLabel={t("Auth.form.submit.login.label")}
         isLoading={isLoading}
       />
-      <Box mt="1em">
-        <CharkaLink as={ReactRouterLink} to="/reset-password" color="teal.500">
+      <div className="mt-5">
+        <Link to="/reset-password" color="teal.500">
           {t("Auth.resetPassword.link")}
-        </CharkaLink>
-      </Box>
+        </Link>
+      </div>
       <DividerWithText text={t("common.or")} />
-      <Box mt="2em" textAlign="center">
+      <div className="mt-5 text-center">
         <LinkButton to="/signup">{t("Auth.form.common.signUp")}</LinkButton>
-      </Box>
-    </AuthLayout>
+      </div>
+    </AuthBox>
   );
 };
 

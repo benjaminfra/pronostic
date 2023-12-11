@@ -23,4 +23,8 @@ describe("Input", () => {
     cy.getBySel("inputTest").should("have.class", "sm:text-sm");
     cy.getBySel("inputTest").should("have.class", "sm:leading-6");
   });
+  it("should handle a span with errorMsg when the property is set", () => {
+    cy.mount(<Input type="text" dataTest="inputTest" errorMsg="test" />);
+    cy.getBySel("errorSpan-inputTest").should("have.text", "test");
+  });
 });

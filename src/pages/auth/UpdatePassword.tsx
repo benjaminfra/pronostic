@@ -1,13 +1,8 @@
 import ErrorAlert from "@/components/alert/error/ErrorAlert";
+import PasswordInput from "@/components/auth/input/PasswordInput";
+import Button from "@/components/button/Button";
 import { AuthContext } from "@/provider/AuthProvider";
 import { getErrorMessage } from "@/utils/ErrorUtils";
-import {
-  Button,
-  FormControl,
-  FormErrorMessage,
-  FormLabel,
-  Input,
-} from "@chakra-ui/react";
 import { useState, useContext } from "react";
 import { useTranslation } from "react-i18next";
 import { useNavigate } from "react-router-dom";
@@ -25,7 +20,8 @@ const UpdatePassword = () => {
     setHasPasswordError(e.target.value.length < 8);
   };
 
-  const submit = async () => {
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
     try {
       await updatePassword(password);
       navigate("/signin");
@@ -40,23 +36,13 @@ const UpdatePassword = () => {
   const isSubmitDisabled = password === "" || hasPasswordError;
 
   return (
-    <>
+    <form onSubmit={handleSubmit}>
       {formError && <ErrorAlert description={formError} />}
-      <FormControl>
-        <FormLabel>{t("Auth.form.password.label")}</FormLabel>
-        <Input
-          type="password"
-          value={password}
-          onChange={updateCurrentPassword}
-        />
-        {hasPasswordError && (
-          <FormErrorMessage>{t("Auth.form.password.error")}</FormErrorMessage>
-        )}
-      </FormControl>
-      <Button onClick={submit} isDisabled={isSubmitDisabled}>
+      <PasswordInput onChange={updateCurrentPassword} value={password} />
+      <Button disabled={isSubmitDisabled}>
         {t("common.button.update.title")}
       </Button>
-    </>
+    </form>
   );
 };
 

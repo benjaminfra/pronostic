@@ -3,7 +3,7 @@ const AuthBox: React.FC<{ children: React.ReactNode; title: string }> = ({
   title,
 }) => {
   return (
-    <div className="max-w-xl mx-auto mt-vh-10 border-gray-400 border rounded-md pb-10">
+    <div className="max-w-xl mx-auto mt-[10vh] border-gray-400 border rounded-md pb-10">
       <div className="py-6 text-center border-b border-gray-400">
         <p className="font-bold text-lg" data-test="auth-title">
           {title}

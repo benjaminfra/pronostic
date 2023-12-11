@@ -3,6 +3,7 @@ export type ButtonProps = React.ButtonHTMLAttributes<HTMLButtonElement> & {
   colorScheme?: "yellow" | "cyan";
   size?: "sm" | "md" | "lg" | "full";
   isLoading?: boolean;
+  dataTest?: string;
 };
 
 const Button: React.FC<ButtonProps> = ({
@@ -10,6 +11,7 @@ const Button: React.FC<ButtonProps> = ({
   colorScheme = "yellow",
   size = "md",
   isLoading = false,
+  dataTest,
   ...props
 }) => {
   const colorVariants = {
@@ -36,11 +38,12 @@ const Button: React.FC<ButtonProps> = ({
       text-md
       min-w-10
       font-semibold
+      disabled:pointer-events-none disabled:opacity-30
     `;
 
   const loader = (
     <svg
-      data-test="loader"
+      data-test={`${dataTest}-loader`}
       aria-hidden="true"
       role="status"
       className="inline mr-3 w-4 h-4 text-black animate-spin"
@@ -60,7 +63,7 @@ const Button: React.FC<ButtonProps> = ({
   );
 
   return (
-    <button {...props} className={buttonClasses} data-test="button">
+    <button {...props} className={buttonClasses} data-test={dataTest}>
       {isLoading && loader}
       {children}
     </button>

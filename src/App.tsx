@@ -1,18 +1,17 @@
-import Button from "./components/button/Button";
-import AuthLayout from "./pages/auth/components/AuthLayout";
-import AuthForm from "./pages/auth/components/NewAuthForm";
+import AuthForm from "@/components/auth/AuthForm";
+import AuthBox from "@/components/auth/layout/AuthBox";
 
 const App = () => {
   return (
-    <AuthLayout title="Se connecter">
+    <AuthBox title="Se connecter">
       <AuthForm
-        formErrorDescription=""
+        formErrorDescription="Erreur"
         hasFormError={false}
         onSubmit={() => {}}
         submitLabel="Connexion"
         isLoading={false}
       />{" "}
-    </AuthLayout>
+    </AuthBox>
   );
 };
 
