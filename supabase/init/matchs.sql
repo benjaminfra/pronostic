@@ -7,7 +7,12 @@ create table "public"."matchs" (
     "team_b" character varying,
     "venue" character varying,
     "api_id" bigint,
-    "city" character varying
+    "city" character varying,
+    "round" text null,
+    "status" text null,
+    "team_a_goal" smallint null,
+    "team_b_goal" smallint null,
+    "season" integer null
 );
 
 

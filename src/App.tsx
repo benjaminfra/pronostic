@@ -1,17 +1,18 @@
-import { Auth } from "@supabase/auth-ui-react";
-import { ThemeSupa } from "@supabase/auth-ui-shared";
-import { supabase } from "./lib/superbase";
+import { Outlet } from "react-router-dom";
 import { useContext } from "react";
+import ProfileButton from "./components/profile/ProfileButton";
 import { AuthContext } from "./provider/AuthProvider";
 
-function App() {
-  const { loggedUser } = useContext(AuthContext);
+const App = () => {
+  const { loggedUser, isUserLoading } = useContext(AuthContext);
   return (
-    <div>
-      <Auth supabaseClient={supabase} appearance={{ theme: ThemeSupa }} />
-      <div>ID user : {loggedUser?.id}</div>
-    </div>
+    <>
+      <ProfileButton isLoading={isUserLoading} loggedUser={loggedUser} />
+      <div>
+        <Outlet />
+      </div>
+    </>
   );
-}
+};
 
 export default App;

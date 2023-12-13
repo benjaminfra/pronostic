@@ -1,0 +1,68 @@
+{
+    "Profile": {
+        "form": {
+            "username": {
+                "label": "Ton pseudo",
+                "helperText": "C'est celui que tout le monde verra"
+            }
+        }
+    },
+    "Auth": {
+        "form": {
+            "common": {
+                "signIn": "Se connecter",
+                "signUp": "S'inscrire",
+                "signOut": "Me déconnecter"
+            },
+            "email": {
+                "label": "Email",
+                "error": "L'email ne correspond pas au format attendu"
+            },
+            "password": {
+                "label": "Mot de passe",
+                "error": "Le mot de passe doit contenir au moins 8 caractères"
+            },
+            "submit": {
+                "signup": {
+                    "label": "S'inscrire",
+                    "error": "Erreur lors de l'inscription"
+                },
+                "login": {
+                    "label": "Se connecter",
+                    "error": "Mauvaise combinaison email/mot de passe"
+                },
+                "updatePassword": {
+                    "error": {
+                        "default": "Une erreur est survenue lors de la mise à jour du mot de passe",
+                        "samePassword": "Le mot de passe ne doit pas être le même que l'actuel"
+                    }
+                }
+            }
+        },
+        "resetPassword": {
+            "link": "Mot de passe oublié ?"
+        }
+    },
+    "ConfirmEmail": {
+        "description": "Pour valider votre inscription veuillez suivre le lien qui vous a été envoyé par email",
+        "redirect": "Retour à l'accueil"
+    },
+    "Error": {
+        "title": "Oops",
+        "description": "Une erreur est survenue"
+    },
+    "common": {
+        "error": {
+            "title": "Une erreur est survenue"
+        },
+        "button": {
+            "update": {
+                "title": "Modifier"
+            },
+            "send": {
+                "title": "Envoyer"
+            }
+        },
+        "or": "Ou"
+    }
+}
