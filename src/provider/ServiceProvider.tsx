@@ -1,6 +1,7 @@
 import UserService from "@/services/user";
 import { createContext, useContext, useMemo } from "react";
 import { AuthContext } from "./AuthProvider";
+import MatchService from "@/services/match";
 
 type IServiceProvider = {
   children: React.ReactNode;
@@ -8,10 +9,12 @@ type IServiceProvider = {
 
 type IServiceContext = {
   userService: UserService;
+  matchService: MatchService;
 };
 
 export const ServiceContext = createContext<IServiceContext>({
   userService: new UserService(undefined),
+  matchService: new MatchService(),
 });
 
 const ServiceProvider = ({ children }: IServiceProvider) => {
@@ -20,6 +23,7 @@ const ServiceProvider = ({ children }: IServiceProvider) => {
   const serviceContext = useMemo(
     () => ({
       userService: new UserService(session?.user?.id),
+      matchService: new MatchService(),
     }),
     [session]
   );

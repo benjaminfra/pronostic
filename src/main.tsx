@@ -12,6 +12,7 @@ import UpdatePassword from "./pages/auth/UpdatePassword.tsx";
 import SignIn from "./pages/auth/SignIn.tsx";
 import ResetPassword from "./pages/auth/ResetPassword.tsx";
 import "./index.css";
+import MatchBoard from "./pages/match/MatchBoard.tsx";
 i18n;
 
 const router = createBrowserRouter([
@@ -39,6 +40,10 @@ const router = createBrowserRouter([
       {
         path: "reset-password",
         element: <ResetPassword />,
+      },
+      {
+        path: "pronostic",
+        element: <MatchBoard />,
       },
     ],
   },
