@@ -3,7 +3,7 @@ name: Get Match
 on:
   workflow_dispatch:
   schedule:
-    - cron: '0 3 * * *'
+    - cron: "0 3 * * *"
 
 jobs:
   insert_database:
@@ -13,7 +13,7 @@ jobs:
       - uses: actions/checkout@v3
       - name: Get Matches
         run: |
-          npx --yes api-sport-cli get-matchs -c .github/configApiSport/football.json -s matchs.football.sql -j matchs.football.json -u api_id
+          npx --yes api-prono-poney-cli get-matchs -c .github/configApiSport/football.json -s matchs.football.sql -j matchs.football.json -u api_id
         env:
           SPORT_API_KEY: ${{ secrets.SPORT_API_KEY }}
       - uses: actions/upload-artifact@v3
@@ -28,7 +28,7 @@ jobs:
           wget --quiet -O - https://www.postgresql.org/media/keys/ACCC4CF8.asc | sudo apt-key add -
           sudo apt-get update
           sudo apt-get install -y postgresql-15
-      - name: Add matchs to database Staging 
+      - name: Add matchs to database Staging
         run: |
           psql -h "db.$STAGING_PROJECT_ID.supabase.co" -p 5432 -d postgres -U postgres -f matchs.football.sql
         env:
