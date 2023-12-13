@@ -7,7 +7,8 @@ create table "public"."matchs" (
     "team_b" character varying,
     "venue" character varying,
     "api_id" bigint,
-    "city" character varying
+    "city" character varying,
+    "round" text varying
 );
 
 
