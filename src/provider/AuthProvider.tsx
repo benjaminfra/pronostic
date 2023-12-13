@@ -1,4 +1,4 @@
-import { createContext, useState } from "react";
+import { createContext, useState, useEffect } from "react";
 import { supabase } from "@/lib/superbase";
 import { Profile } from "@/types/users";
 import { Session, User } from "@supabase/supabase-js";
@@ -8,6 +8,7 @@ import i18n from "../lang";
 type IAuthContext = {
   loggedUser: Profile | undefined;
   session: Session | null | undefined;
+  isUserLoading: boolean;
   signUpWithRandomUsername: (email: string, password: string) => Promise<void>;
   signIn: (email: string, password: string) => Promise<void>;
   sendPasswordLink: (email: string) => Promise<void>;
@@ -18,6 +19,7 @@ type IAuthContext = {
 export const AuthContext = createContext<IAuthContext>({
   loggedUser: undefined,
   session: undefined,
+  isUserLoading: false,
   signUpWithRandomUsername: async () => {},
   signIn: async () => {},
   sendPasswordLink: async () => {},
@@ -29,6 +31,34 @@ const AuthProvider: React.FC<{ children: React.ReactNode }> = ({
 }) => {
   const [loggedUser, setLoggedUser] = useState<Profile | undefined>();
   const [session, setSession] = useState<Session | null>();
+  const [isUserLoading, setIsUserLoading] = useState<boolean>(false);
+
+  useEffect(() => {
+    if (!session) {
+      setIsUserLoading(true);
+      supabase.auth
+        .getSession()
+        .then(({ data }) => {
+          const currentSession = data.session;
+          if (currentSession) {
+            setSession(currentSession);
+            getLoggedUser(currentSession.user)
+              .then((profile) => {
+                setLoggedUser(profile);
+                setIsUserLoading(false);
+              })
+              .catch((error) => {
+                setIsUserLoading(false);
+                throw new Error(error);
+              });
+          }
+        })
+        .catch(() => {
+          setIsUserLoading(false);
+          throw new Error("Impossible de synchronizer les sessions");
+        });
+    }
+  }, [session]);
 
   const getLoggedUser: (sessionUser: User) => Promise<Profile> = async (
     sessionUser: User
@@ -117,6 +147,7 @@ const AuthProvider: React.FC<{ children: React.ReactNode }> = ({
       value={{
         loggedUser,
         session,
+        isUserLoading,
         signUpWithRandomUsername,
         signIn,
         sendPasswordLink,

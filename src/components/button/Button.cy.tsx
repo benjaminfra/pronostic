@@ -33,6 +33,15 @@ describe("Button", () => {
     );
     cy.getBySel("button").should("have.class", "w-full");
   });
+  it("should handle lg size", () => {
+    cy.mount(
+      <Button dataTest="button" size="lg">
+        Test
+      </Button>
+    );
+    cy.getBySel("button").should("have.class", "w-60");
+    cy.getBySel("button").should("have.class", "h-14");
+  });
   it("should handle children", () => {
     const test = "test";
     cy.mount(

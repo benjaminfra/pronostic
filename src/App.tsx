@@ -1,13 +1,13 @@
 import { Outlet } from "react-router-dom";
 import { useContext } from "react";
-import Avatar from "./components/profile/Avatar";
+import ProfileButton from "./components/profile/ProfileButton";
 import { AuthContext } from "./provider/AuthProvider";
 
 const App = () => {
-  const { loggedUser } = useContext(AuthContext);
+  const { loggedUser, isUserLoading } = useContext(AuthContext);
   return (
     <>
-      <Avatar loggedUser={loggedUser} />
+      <ProfileButton isLoading={isUserLoading} loggedUser={loggedUser} />
       <div>
         <Outlet />
       </div>
