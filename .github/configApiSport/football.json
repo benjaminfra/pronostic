@@ -7,7 +7,7 @@
         "venue": "fixture.venue.name",
         "city": "fixture.venue.city",
         "api_id": "fixture.id",
-        "round": "fixtue.round"
+        "round": "fixture.round"
     },
     "leagues": {
         "football": [
