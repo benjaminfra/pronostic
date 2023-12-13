@@ -7,7 +7,11 @@
         "venue": "fixture.venue.name",
         "city": "fixture.venue.city",
         "api_id": "fixture.id",
-        "round": "fixture.round"
+        "status": "fixture.status.short",
+        "team_a_goal": "goals.home",
+        "team_b_goal": "goals.away",
+        "round": "league.round",
+        "season": "league.season"
     },
     "leagues": {
         "football": [
