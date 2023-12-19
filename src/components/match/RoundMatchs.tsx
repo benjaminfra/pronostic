@@ -9,7 +9,7 @@ const RoundMatchs: React.FC<RoundMatchProps> = ({ matchs, isLoading }) => {
   console.log(matchs);
   return matchs?.map((match, key) => (
     <div key={key}>
-      {match.team_a} - {match.team_b}
+      {match.team_a.name} - {match.team_b.name}
     </div>
   ));
 };

@@ -16,13 +16,13 @@ export interface Database {
           created_at: string | null
           date: string | null
           id: number
-          league: string | null
-          round: string | null
+          league: string
+          round: string
           season: number | null
           status: string | null
-          team_a: string | null
+          team_a: number
           team_a_goal: number | null
-          team_b: string | null
+          team_b: number
           team_b_goal: number | null
           venue: string | null
         }
@@ -32,13 +32,13 @@ export interface Database {
           created_at?: string | null
           date?: string | null
           id?: number
-          league?: string | null
-          round?: string | null
+          league: string
+          round: string
           season?: number | null
           status?: string | null
-          team_a?: string | null
+          team_a: number
           team_a_goal?: number | null
-          team_b?: string | null
+          team_b: number
           team_b_goal?: number | null
           venue?: string | null
         }
@@ -48,17 +48,32 @@ export interface Database {
           created_at?: string | null
           date?: string | null
           id?: number
-          league?: string | null
-          round?: string | null
+          league?: string
+          round?: string
           season?: number | null
           status?: string | null
-          team_a?: string | null
+          team_a?: number
           team_a_goal?: number | null
-          team_b?: string | null
+          team_b?: number
           team_b_goal?: number | null
           venue?: string | null
         }
-        Relationships: []
+        Relationships: [
+          {
+            foreignKeyName: "matchs_team_a_fkey"
+            columns: ["team_a"]
+            isOneToOne: false
+            referencedRelation: "teams"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "matchs_team_b_fkey"
+            columns: ["team_b"]
+            isOneToOne: false
+            referencedRelation: "teams"
+            referencedColumns: ["id"]
+          }
+        ]
       }
       profiles: {
         Row: {
@@ -82,6 +97,27 @@ export interface Database {
             referencedColumns: ["id"]
           }
         ]
+      }
+      teams: {
+        Row: {
+          created_at: string
+          id: number
+          logo: string | null
+          name: string
+        }
+        Insert: {
+          created_at?: string
+          id?: number
+          logo?: string | null
+          name: string
+        }
+        Update: {
+          created_at?: string
+          id?: number
+          logo?: string | null
+          name?: string
+        }
+        Relationships: []
       }
     }
     Views: {

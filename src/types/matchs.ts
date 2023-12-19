@@ -1,9 +1,11 @@
+import { Team } from "./teams";
+
 export interface Match {
   id: number;
   league: string;
   date: Date | null;
-  team_a: string;
-  team_b: string;
+  team_a: Team;
+  team_b: Team;
   venue: string | null;
   status: string | null;
   team_a_goal: number | null;
