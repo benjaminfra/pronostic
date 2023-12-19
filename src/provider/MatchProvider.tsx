@@ -22,13 +22,11 @@ const MatchProvider: React.FC<{ children: React.ReactNode }> = ({
   ) => Promise<Match[] | undefined> = async (round: number) => {
     setIsMatchLoading(true);
 
-    console.log("round search : ", `Regular Season - ${round.toString()}`);
     const { data, error } = await supabase
       .from("matchs")
       .select()
       .eq("round", `Regular Season - ${round.toString()}`);
 
-    console.log("data : ", data);
     if (error) {
       setIsMatchLoading(false);
       throw new Error(

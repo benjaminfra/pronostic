@@ -1,5 +1,5 @@
 import { MatchContext } from "@/provider/MatchProvider";
-import { useContext, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import RoundSelector from "./RoundSelector";
 import { Match } from "@/types/matchs";
 import RoundMatchs from "./RoundMatchs";
@@ -10,21 +10,34 @@ const MatchsSelector = () => {
   const [matchs, setMatchs] = useState<Match[] | undefined>(undefined);
   const [round, setRound] = useState<number>(1);
 
+  useEffect(() => {
+    if (round) {
+      getMatchsByRound(round).then((data) => {
+        setMatchs(data);
+      });
+    }
+  }, [round]);
+
   const onUp = async () => {
     setRound(round + 1);
-    const matchs = await getMatchsByRound(round);
-    setMatchs(matchs);
   };
 
   const onDown = async () => {
     setRound(round - 1);
-    const matchs = await getMatchsByRound(round);
-    setMatchs(matchs);
+  };
+
+  const onChange = async (value: number) => {
+    setRound(value);
   };
 
   return (
     <div>
-      <RoundSelector onDown={onDown} onUp={onUp} value={round} />
+      <RoundSelector
+        onChange={onChange}
+        onDown={onDown}
+        onUp={onUp}
+        value={round}
+      />
       <RoundMatchs isLoading={isMatchLoading} matchs={matchs} />
     </div>
   );
