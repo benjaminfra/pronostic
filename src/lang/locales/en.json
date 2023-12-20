@@ -43,6 +43,9 @@
             "link": "Don't remember my password"
         }
     },
+    "Pronostic": {
+        "round": "J-{{roundNumber}}"
+    },
     "ConfirmEmail": {
         "description": "To validate your sign up, please follow the link in the email that you received",
         "redirect": "Home"

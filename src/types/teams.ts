@@ -1,5 +1,5 @@
 export interface Team {
   id: number;
-  logo: string | null;
+  logo: string | undefined;
   name: string;
 }

@@ -1,4 +1,6 @@
 import { Match } from "@/types/matchs";
+import TeamCard from "./TeamCard";
+import InputNumber from "../input/InputNumber";
 
 type RoundMatchProps = {
   matchs: Match[] | undefined;
@@ -6,10 +8,20 @@ type RoundMatchProps = {
 };
 
 const RoundMatchs: React.FC<RoundMatchProps> = ({ matchs, isLoading }) => {
-  console.log(matchs);
   return matchs?.map((match, key) => (
-    <div key={key}>
-      {match.team_a.name} - {match.team_b.name}
+    <div key={key} className="flex my-10 items-center">
+      <div className="flex-1">
+        <TeamCard team={match.team_a} />
+      </div>
+      <div className="flex-none mx-2">
+        <InputNumber />
+      </div>
+      <div className="flex-none mx-2">
+        <InputNumber />
+      </div>
+      <div className="flex-1">
+        <TeamCard team={match.team_b} isAway={true} />
+      </div>
     </div>
   ));
 };

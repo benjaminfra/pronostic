@@ -31,7 +31,7 @@ const MatchsSelector = () => {
   };
 
   return (
-    <div>
+    <div className="max-w-5xl m-auto">
       <RoundSelector
         onChange={onChange}
         onDown={onDown}
