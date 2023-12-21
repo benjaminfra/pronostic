@@ -19,11 +19,15 @@ const MatchsSelector = () => {
   }, [round]);
 
   const onUp = async () => {
-    setRound(round + 1);
+    if (round < 34) {
+      setRound(round + 1);
+    }
   };
 
   const onDown = async () => {
-    setRound(round - 1);
+    if (round > 1) {
+      setRound(round - 1);
+    }
   };
 
   const onChange = async (value: number) => {

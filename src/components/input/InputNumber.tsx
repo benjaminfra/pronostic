@@ -1,13 +1,18 @@
-type InputNumberProps = React.InputHTMLAttributes<HTMLInputElement>;
+const InputNumber: React.FC<React.InputHTMLAttributes<HTMLInputElement>> = ({
+  ...props
+}) => {
+  const classes = `
+    ${props.className}
+    border 
+    focus:border-yellow-500 
+    hover:border-yellow-500
+    shadow-sm
+    p-2.5
+    rounded-md
+    text-xl
+  `;
 
-const InputNumber: React.FC<InputNumberProps> = ({ ...props }) => {
-  return (
-    <input
-      type="number"
-      {...props}
-      className="h-full w-20 border focus:border-yellow-500 hover:border-yellow-500 shadow-sm p-2.5 rounded-md text-xl"
-    />
-  );
+  return <input type="number" {...props} className={classes} />;
 };
 
 export default InputNumber;

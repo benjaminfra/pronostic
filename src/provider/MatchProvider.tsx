@@ -51,7 +51,7 @@ const MatchProvider: React.FC<{ children: React.ReactNode }> = ({
         "Une erreur est survenue lors de la récupération des matchs"
       );
     }
-    setIsMatchLoading(true);
+    setIsMatchLoading(false);
 
     return data?.map(
       (match) =>

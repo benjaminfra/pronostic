@@ -1,6 +1,7 @@
 import { Match } from "@/types/matchs";
-import TeamCard from "./TeamCard";
-import InputNumber from "../input/InputNumber";
+import MatchCard from "./MatchCard";
+import MatchCardSkeleton from "./MatchCardSkeleton";
+import { MATCHS_BY_ROUND } from "@/constants/constants";
 
 type RoundMatchProps = {
   matchs: Match[] | undefined;
@@ -8,22 +9,19 @@ type RoundMatchProps = {
 };
 
 const RoundMatchs: React.FC<RoundMatchProps> = ({ matchs, isLoading }) => {
-  return matchs?.map((match, key) => (
-    <div key={key} className="flex my-10 items-center">
-      <div className="flex-1">
-        <TeamCard team={match.team_a} />
-      </div>
-      <div className="flex-none mx-2">
-        <InputNumber />
-      </div>
-      <div className="flex-none mx-2">
-        <InputNumber />
-      </div>
-      <div className="flex-1">
-        <TeamCard team={match.team_b} isAway={true} />
-      </div>
+  const onLoadingDiv = MATCHS_BY_ROUND.map((_, key) => (
+    <div key={key} className="my-10">
+      <MatchCardSkeleton />
     </div>
   ));
+
+  const matchsDiv = matchs?.map((match, key) => (
+    <div key={key} className="flex my-10 items-center">
+      <MatchCard match={match} isLoading={isLoading} />
+    </div>
+  ));
+
+  return isLoading ? onLoadingDiv : matchsDiv;
 };
 
 export default RoundMatchs;
