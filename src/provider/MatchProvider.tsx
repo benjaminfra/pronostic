@@ -2,9 +2,14 @@ import { createContext, useState } from "react";
 import { Match } from "@/types/matchs";
 import { supabase } from "@/lib/superbase";
 import { Team } from "@/types/teams";
+import { DateTime } from "luxon";
+import { NO_DATE } from "@/constants/constants";
+import { addToAccumulator } from "@/utils/ObjectUtils";
 
 type IMatchContext = {
-  getMatchsByRound: (round: number) => Promise<Match[] | undefined>;
+  getMatchsByRound: (
+    round: number
+  ) => Promise<{ [date: string]: Match[] } | undefined>;
   isMatchLoading: boolean;
 };
 
@@ -20,7 +25,9 @@ const MatchProvider: React.FC<{ children: React.ReactNode }> = ({
 
   const getMatchsByRound: (
     round: number
-  ) => Promise<Match[] | undefined> = async (round: number) => {
+  ) => Promise<{ [date: string]: Match[] } | undefined> = async (
+    round: number
+  ) => {
     setIsMatchLoading(true);
 
     const selectMatchsWithTeams = supabase
@@ -40,7 +47,8 @@ const MatchProvider: React.FC<{ children: React.ReactNode }> = ({
         team_b:teams!matchs_team_b_fkey(*)
         `
       )
-      .eq("round", `Regular Season - ${round.toString()}`);
+      .eq("round", `Regular Season - ${round.toString()}`)
+      .order("date", { ascending: true });
 
     const { data, error } = await selectMatchsWithTeams;
 
@@ -51,24 +59,37 @@ const MatchProvider: React.FC<{ children: React.ReactNode }> = ({
         "Une erreur est survenue lors de la récupération des matchs"
       );
     }
-    setIsMatchLoading(false);
 
-    return data?.map(
-      (match) =>
-        ({
-          id: match.id,
-          league: match.league,
-          date: match.date,
-          team_a: match.team_a as Team,
-          team_b: match.team_b as Team,
-          venue: match.venue,
-          status: match.status,
-          team_a_goal: match.team_a_goal,
-          team_b_goal: match.team_b_goal,
-          round: match.round,
-          season: match.season,
-        } as Match)
-    );
+    if (data) {
+      const matchsByDate = data.reduce((acc, dbMatch) => {
+        const match: Match = {
+          id: dbMatch.id,
+          league: dbMatch.league,
+          date: dbMatch.date,
+          team_a: dbMatch.team_a as Team,
+          team_b: dbMatch.team_b as Team,
+          venue: dbMatch.venue,
+          status: dbMatch.status,
+          team_a_goal: dbMatch.team_a_goal,
+          team_b_goal: dbMatch.team_b_goal,
+          round: dbMatch.round,
+          season: dbMatch.season,
+        } as Match;
+
+        if (!match.date) {
+          addToAccumulator(acc, NO_DATE, match);
+        } else {
+          const dateStr = DateTime.fromISO(match.date).toISODate();
+          if (dateStr) {
+            addToAccumulator(acc, dateStr, match);
+          }
+        }
+        return acc;
+      }, {});
+
+      setIsMatchLoading(false);
+      return matchsByDate;
+    }
   };
 
   return (

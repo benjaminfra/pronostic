@@ -3,16 +3,15 @@ import TeamBox from "./TeamBox";
 
 type TeamCardProps = {
   team: Team;
-  isAway?: boolean;
 };
 
-const TeamCard: React.FC<TeamCardProps> = ({ team, isAway = false }) => {
+const TeamCard: React.FC<TeamCardProps> = ({ team }) => {
   return (
-    <TeamBox isAway={isAway}>
-      <div className={`flex-none`}>
-        <img src={team.logo} className="w-14 h-14" />
+    <TeamBox>
+      <div className="flex-none">
+        <img src={team.logo} className="w-16 h-16" />
       </div>
-      <div className="flex-1 text-center">{team.name}</div>
+      <div className="font-semi-bold flex-1 m-2 text-center">{team.name}</div>
     </TeamBox>
   );
 };

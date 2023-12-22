@@ -44,7 +44,8 @@
         }
     },
     "Pronostic": {
-        "round": "J-{{roundNumber}}"
+        "round": "J-{{roundNumber}}",
+        "noDate": "Date non définie"
     },
     "ConfirmEmail": {
         "description": "Pour valider votre inscription veuillez suivre le lien qui vous a été envoyé par email",

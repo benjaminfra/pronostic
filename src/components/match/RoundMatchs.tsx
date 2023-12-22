@@ -16,12 +16,12 @@ const RoundMatchs: React.FC<RoundMatchProps> = ({ matchs, isLoading }) => {
   ));
 
   const matchsDiv = matchs?.map((match, key) => (
-    <div key={key} className="flex my-10 items-center">
+    <div key={key} className="my-10">
       <MatchCard match={match} isLoading={isLoading} />
     </div>
   ));
 
-  return isLoading ? onLoadingDiv : matchsDiv;
+  return isLoading ? onLoadingDiv : <div>{matchsDiv}</div>;
 };
 
 export default RoundMatchs;

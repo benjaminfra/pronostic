@@ -3,7 +3,7 @@ import { Team } from "./teams";
 export interface Match {
   id: number;
   league: string;
-  date: Date | null;
+  date: string | null;
   team_a: Team;
   team_b: Team;
   venue: string | null;

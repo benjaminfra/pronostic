@@ -7,14 +7,14 @@ const MatchCardSkeleton = () => {
       <div className="flex-1">
         <TeamCardSkeleton />
       </div>
-      <div className="flex-none mx-2">
-        <DivSkeleton className="w-18 h-full" />
+      <div className="flex-none w-16 h-16 mr-1">
+        <DivSkeleton className="h-full w-full mt-2" rounded="md" />
       </div>
-      <div className="flex-none mx-2">
-        <DivSkeleton className="w-18 h-full" />
+      <div className="flex-none w-16 h-16 ml-1">
+        <DivSkeleton className="h-full w-full mt-2" rounded="md" />
       </div>
       <div className="flex-1">
-        <TeamCardSkeleton isAway={true} />
+        <TeamCardSkeleton />
       </div>
     </div>
   );
