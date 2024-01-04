@@ -24,8 +24,6 @@ create table
 alter table "public"."matchs" enable row level security;
 CREATE UNIQUE INDEX "matchs_apiId_key" ON public.matchs USING btree (api_id);
 CREATE UNIQUE INDEX matchs_id_key ON public.matchs USING btree (id);
-CREATE UNIQUE INDEX matchs_pkey ON public.matchs USING btree (id);
-alter table "public"."matchs" add constraint "matchs_pkey" PRIMARY KEY using index "matchs_pkey";
 alter table "public"."matchs" add constraint "matchs_apiId_key" UNIQUE using index "matchs_apiId_key";
 alter table "public"."matchs" add constraint "matchs_id_key" UNIQUE using index "matchs_id_key";
 

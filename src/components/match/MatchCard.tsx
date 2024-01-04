@@ -1,6 +1,6 @@
 import { Match } from "@/types/matchs";
 import TeamCard from "./team/TeamCard";
-import InputNumber from "../input/InputNumber";
+import MatchScore from "./MatchScore";
 
 type MatchCardProps = {
   match: Match;
@@ -8,18 +8,18 @@ type MatchCardProps = {
 };
 
 const MatchCard: React.FC<MatchCardProps> = ({ match }) => {
+  console.log(match);
   return (
     <>
       <div className="flex items-center">
         <div className="flex-1">
           <TeamCard team={match.team_a} />
         </div>
-        <div className="flex-none mx-2">
-          <InputNumber className="w-16 h-16" />
-        </div>
-        <div className="flex-none mx-2">
-          <InputNumber className="w-16 h-16" />
-        </div>
+        <MatchScore
+          matchStatus={match.status}
+          teamAGoal={match.team_a_goal}
+          teamBGoal={match.team_b_goal}
+        />
         <div className="flex-1">
           <TeamCard team={match.team_b} />
         </div>

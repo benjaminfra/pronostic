@@ -40,7 +40,9 @@ const SignIn = () => {
           {t("Auth.resetPassword.link")}
         </Link>
       </div>
-      <DividerWithText text={t("common.or")} />
+      <div className="my-10">
+        <DividerWithText text={t("common.or")} />
+      </div>
       <div className="mt-5 text-center">
         <LinkButton to="/signup">{t("Auth.form.common.signUp")}</LinkButton>
       </div>

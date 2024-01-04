@@ -1,5 +1,5 @@
 import { createContext, useState } from "react";
-import { Match } from "@/types/matchs";
+import { Match, convertStatus } from "@/types/matchs";
 import { supabase } from "@/lib/superbase";
 import { Team } from "@/types/teams";
 import { DateTime } from "luxon";
@@ -69,7 +69,7 @@ const MatchProvider: React.FC<{ children: React.ReactNode }> = ({
           team_a: dbMatch.team_a as Team,
           team_b: dbMatch.team_b as Team,
           venue: dbMatch.venue,
-          status: dbMatch.status,
+          status: convertStatus(dbMatch.status),
           team_a_goal: dbMatch.team_a_goal,
           team_b_goal: dbMatch.team_b_goal,
           round: dbMatch.round,

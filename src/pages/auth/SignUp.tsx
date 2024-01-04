@@ -36,8 +36,9 @@ const SignUp = () => {
         submitLabel={t("Auth.form.submit.signup.label")}
         isLoading={isLoading}
       />
-
-      <DividerWithText text={t("common.or")} />
+      <div className="my-10">
+        <DividerWithText text={t("common.or")} />
+      </div>
       <div className="mt-5 text-center">
         <LinkButton to="/signin">{t("Auth.form.common.signIn")}</LinkButton>
       </div>
