@@ -9,7 +9,7 @@ const AbsoluteCenter: React.FC<AbsoluteCenterProps> = ({
   const classes = `
     ${props.className ? props.className : ""}
     absolute left-1/2 top-1/2 ps-6 pe-6
-    -translate-y-2/4 -translate-x-2/4 bg-white
+    -translate-y-2/4 -translate-x-2/4 bg-inherit
   `;
 
   return (

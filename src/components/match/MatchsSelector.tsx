@@ -4,6 +4,8 @@ import RoundSelector from "./RoundSelector";
 import { Match } from "@/types/matchs";
 import RoundMatchs from "./RoundMatchs";
 import MatchDate from "./MatchDate";
+import Loader from "../loader/Loader";
+import AbsoluteCenter from "../layout/AbsoluteCenter";
 
 const MatchsSelector = () => {
   const { getMatchsByRound, isMatchLoading } = useContext(MatchContext);
@@ -38,20 +40,25 @@ const MatchsSelector = () => {
     setRound(value);
   };
 
+  const onLoadingDiv = (
+    <AbsoluteCenter>
+      <Loader />
+    </AbsoluteCenter>
+  );
+
   const roundMatchs = roundMatchsByDate
     ? Object.keys(roundMatchsByDate).map((date, key) => (
         <div key={key} className="my-10">
-          <MatchDate date={date} isLoading={isMatchLoading} />
+          <MatchDate date={date} />
           <RoundMatchs
             matchs={roundMatchsByDate ? roundMatchsByDate[date] : undefined}
-            isLoading={isMatchLoading}
           />
         </div>
       ))
     : "NoData";
 
-  return (
-    <div className="max-w-5xl m-auto">
+  const matchsDiv = (
+    <>
       <RoundSelector
         onChange={onChange}
         onDown={onDown}
@@ -59,6 +66,12 @@ const MatchsSelector = () => {
         value={round}
       />
       {roundMatchs}
+    </>
+  );
+
+  return (
+    <div className="max-w-5xl m-auto text-white">
+      {isMatchLoading ? onLoadingDiv : matchsDiv}
     </div>
   );
 };

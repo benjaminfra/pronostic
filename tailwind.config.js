@@ -6,6 +6,10 @@ export default {
       fontFamily: {
         lexend: ["Lexend", "sans-serif"],
       },
+      colors: {
+        "dark-night-blue": "rgb(20, 30, 48)",
+        "dark-moderate-blue": "rgb(36, 59, 85)",
+      },
     },
   },
   plugins: [],
