@@ -70,7 +70,7 @@ const MatchsSelector = () => {
   );
 
   return (
-    <div className="max-w-5xl m-auto text-white">
+    <div className="max-w-5xl m-auto">
       {isMatchLoading ? onLoadingDiv : matchsDiv}
     </div>
   );

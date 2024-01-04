@@ -8,7 +8,9 @@ const DividerWithText: React.FC<{ text: string }> = ({ text }) => {
         className="border-solid opacity-60 w-100 border-b-1"
         data-test="divider"
       />
-      <AbsoluteCenter>{text}</AbsoluteCenter>
+      <AbsoluteCenter>
+        <div className="bg-dark-moderate-blue p-5">{text}</div>
+      </AbsoluteCenter>
     </div>
   );
 };
