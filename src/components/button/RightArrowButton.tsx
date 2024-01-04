@@ -6,7 +6,7 @@ type RightArrowButtonProps = Omit<RoundButtonProps, "children">;
 const RightArrowButton: React.FC<RightArrowButtonProps> = (props) => {
   return (
     <RoundButton
-      className="ease-in-out hover:-translate-y-1 hover:scale-110 transition-all"
+      className="ease-in-out hover:-translate-y-1 hover:scale-110 transition-all bg-dark-moderate-blue"
       colorScheme="transparent"
       {...props}
     >

@@ -7,4 +7,10 @@
   html {
     font-family: "Lexend", system-ui, sans-serif;
   }
+  select::-webkit-menu-item {
+    @apply bg-dark-moderate-blue;
+  }
+  select option {
+    @apply bg-dark-moderate-blue;
+  }
 }

@@ -9,7 +9,7 @@ const DividerWithText: React.FC<{ text: string }> = ({ text }) => {
         data-test="divider"
       />
       <AbsoluteCenter>
-        <div className="bg-dark-moderate-blue p-5">{text}</div>
+        <div className="bg-dark-night-blue p-5">{text}</div>
       </AbsoluteCenter>
     </div>
   );

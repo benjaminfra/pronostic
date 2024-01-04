@@ -9,7 +9,7 @@ const Input: React.FC<InputProps> = ({ dataTest, errorMsg, ...props }) => {
       <input
         data-test={dataTest}
         {...props}
-        className="peer block w-full rounded-md border-0 py-1.5 px-3 bg-dark-night-blue
+        className="peer block w-full rounded-md border-0 py-1.5 px-3 bg-dark-moderate-blue
        shadow-sm 
        ring-1
        ring-inset ring-gray-300 placeholder:text-gray-400

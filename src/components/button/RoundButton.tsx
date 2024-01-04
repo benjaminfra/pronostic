@@ -12,7 +12,7 @@ const RoundButton: React.FC<RoundButtonProps> = ({
 }) => {
   const colorVariants = {
     yellow: "bg-yellow-400 hover:bg-yellow-300",
-    transparent: "border border-gray-400",
+    transparent: "border border-white",
   };
 
   const buttonClasses = `${props.className ? props.className : ""}

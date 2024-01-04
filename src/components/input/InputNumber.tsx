@@ -10,6 +10,7 @@ const InputNumber: React.FC<React.InputHTMLAttributes<HTMLInputElement>> = ({
     p-2.5
     rounded-md
     text-xl
+    bg-dark-moderate-blue
   `;
 
   return <input type="number" {...props} className={classes} />;
