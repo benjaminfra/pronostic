@@ -65,15 +65,11 @@ const MatchsSelector = () => {
         onUp={onUp}
         value={round}
       />
-      {roundMatchs}
+      {isMatchLoading ? onLoadingDiv : roundMatchs}
     </>
   );
 
-  return (
-    <div className="max-w-5xl m-auto">
-      {isMatchLoading ? onLoadingDiv : matchsDiv}
-    </div>
-  );
+  return <div className="max-w-5xl xl:mx-auto my-32 mx-20">{matchsDiv}</div>;
 };
 
 export default MatchsSelector;
