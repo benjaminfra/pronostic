@@ -16,6 +16,7 @@ const EmailInput = ({ value, onChange }: EmailInputProps) => {
       onChange={onChange}
       type="email"
       value={value}
+      autoComplete="email"
     />
   );
 };

@@ -13,6 +13,7 @@ type InputLabelProps = {
   onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
   errorMsg: string;
   validation?: InputValidation;
+  autoComplete?: string;
 };
 
 const InputWithLabel: React.FC<InputLabelProps> = ({
@@ -23,6 +24,7 @@ const InputWithLabel: React.FC<InputLabelProps> = ({
   onChange,
   errorMsg,
   validation,
+  autoComplete,
 }) => {
   return (
     <div>
@@ -36,6 +38,7 @@ const InputWithLabel: React.FC<InputLabelProps> = ({
           onChange={onChange}
           errorMsg={errorMsg}
           minLength={validation?.minLength}
+          autoComplete={autoComplete}
         />
       </div>
     </div>
