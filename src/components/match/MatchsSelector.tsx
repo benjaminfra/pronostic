@@ -22,6 +22,7 @@ const MatchsSelector = () => {
         setRoundMatchsByDate(data);
       });
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [round]);
 
   const onUp = async () => {
