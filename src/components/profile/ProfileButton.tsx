@@ -50,7 +50,7 @@ const ProfileButton: React.FC<ProfileButtonProps> = ({
 
   return (
     <>
-      <div className="absolute top-0 right-0 z-10 m-6 inline-block">
+      <div className="absolute top-0 right-0 m-6 inline-block">
         {buttonProfile}
       </div>
       {loggedUser && isProfileSlideOpen && (
