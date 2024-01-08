@@ -70,7 +70,9 @@ const MatchsSelector = () => {
     </>
   );
 
-  return <div className="max-w-5xl xl:mx-auto my-32 mx-20">{matchsDiv}</div>;
+  return (
+    <div className="max-w-5xl xl:mx-auto my-32 mx-10 md:mx-20">{matchsDiv}</div>
+  );
 };
 
 export default MatchsSelector;
