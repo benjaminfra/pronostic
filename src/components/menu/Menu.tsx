@@ -8,10 +8,16 @@ const Menu = () => {
   const { t } = useTranslation();
 
   return (
-    <div className="fixed h-screen lg:w-1/6 md:w-1/5 top-0 left-0 bg-dark-night-blue ml-5">
-      <MenuItem icon={<Ball />} link="/pronostic" name={t("Menu.play")} />
-      <MenuItem icon={<UserGroup />} link="/" name={t("Menu.leagues")} />
-      <MenuItem icon={<Trophy />} link="/" name={t("Menu.ranking")} />
+    <div className="fixed md:h-screen lg:w-1/6 md:w-1/5 w-screen md:top-0 md:left-0 max-md:bottom-0 bg-dark-night-blue md:ml-5 flex md:flex-col justify-around md:justify-start max-md:border max-md:border-t-white">
+      <div>
+        <MenuItem icon={<Ball />} link="/pronostic" name={t("Menu.play")} />
+      </div>
+      <div>
+        <MenuItem icon={<UserGroup />} link="/" name={t("Menu.leagues")} />
+      </div>
+      <div>
+        <MenuItem icon={<Trophy />} link="/" name={t("Menu.ranking")} />
+      </div>
     </div>
   );
 };
