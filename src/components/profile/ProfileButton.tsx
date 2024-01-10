@@ -59,9 +59,15 @@ const ProfileButton: React.FC<ProfileButtonProps> = ({
     ? "fixed inset-0 z-50 flex h-full w-full justify-end bg-black/80"
     : "";
 
+  const widthClasses = `grow md:fixed absolute top-0 h-screen right-0 ${
+    isProfileSlideOpen
+      ? "2xl:w-1/5 xl:w-1/4 lg:w-1/3 sm:w-2/3 max-sm:w-screen"
+      : "w-0"
+  }`;
+
   const divContent = (
     <div className={mainDivClasses}>
-      <div className="grow fixed top-0 h-screen 2xl:w-1/5 xl:w-1/4 lg:w-1/3 sm:w-2/3 max-sm:w-screen right-0">
+      <div className={widthClasses}>
         <div className="absolute top-0 right-0 m-6 inline-block ">
           {buttonProfile}
         </div>
