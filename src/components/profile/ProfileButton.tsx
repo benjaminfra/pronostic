@@ -48,20 +48,37 @@ const ProfileButton: React.FC<ProfileButtonProps> = ({
     );
   }
 
-  return (
-    <>
-      <div className="absolute top-0 right-0 m-6 inline-block">
-        {buttonProfile}
+  const transitionClasses = `transition-all  duration-300 
+    ${
+      isProfileSlideOpen ? "translate-x-0 ease-out" : "translate-x-full ease-in"
+    }`;
+
+  const profilSlideDivClasses = `${transitionClasses} h-full bg-slate-800 `;
+
+  const mainDivClasses = isProfileSlideOpen
+    ? "fixed inset-0 z-50 flex h-full w-full justify-end bg-black/80"
+    : "";
+
+  const divContent = (
+    <div className={mainDivClasses}>
+      <div className="grow sm:fixed sm:top-0 sm:h-screen xl:w-1/5 lg:w-1/4 md:w-1/3 sm:w-1/2 sm:right-0">
+        <div className="absolute top-0 right-0 m-6 inline-block ">
+          {buttonProfile}
+        </div>
+        <div className={profilSlideDivClasses}>
+          {loggedUser && (
+            <ProfilSlide
+              isOpened={isProfileSlideOpen}
+              onClose={() => setIsProfileSlideOpen(false)}
+              profile={loggedUser as Profile}
+            />
+          )}
+        </div>
       </div>
-      {loggedUser && isProfileSlideOpen && (
-        <ProfilSlide
-          isOpen={isProfileSlideOpen}
-          onClose={() => setIsProfileSlideOpen(false)}
-          profile={loggedUser as Profile}
-        />
-      )}
-    </>
+    </div>
   );
+
+  return divContent;
 };
 
 export default ProfileButton;
