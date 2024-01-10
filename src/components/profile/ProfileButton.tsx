@@ -61,7 +61,7 @@ const ProfileButton: React.FC<ProfileButtonProps> = ({
 
   const divContent = (
     <div className={mainDivClasses}>
-      <div className="grow sm:fixed sm:top-0 sm:h-screen xl:w-1/5 lg:w-1/4 md:w-1/3 sm:w-1/2 sm:right-0">
+      <div className="grow fixed top-0 h-screen 2xl:w-1/5 xl:w-1/4 lg:w-1/3 sm:w-2/3 max-sm:w-screen right-0">
         <div className="absolute top-0 right-0 m-6 inline-block ">
           {buttonProfile}
         </div>

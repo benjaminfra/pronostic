@@ -8,7 +8,7 @@ type MatchCardProps = {
 
 const MatchCard: React.FC<MatchCardProps> = ({ match }) => {
   return (
-    <div className="flex items-center border p-7 rounded-xl bg-dark-night-blue">
+    <div className="flex items-center border sm:p-7 rounded-xl bg-dark-night-blue">
       <div className="flex-1">
         <TeamCard team={match.team_a} />
       </div>
