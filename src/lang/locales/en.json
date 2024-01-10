@@ -51,6 +51,11 @@
         "description": "To validate your sign up, please follow the link in the email that you received",
         "redirect": "Home"
     },
+    "Menu": {
+        "play": "Play",
+        "ranking": "Ranking",
+        "leagues": "My leagues"
+    },
     "Error": {
         "title": "Oops",
         "description": "Something went wrong"

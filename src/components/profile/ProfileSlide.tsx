@@ -32,8 +32,7 @@ const ProfilSlide: React.FC<ProfileSlideProps> = ({
         ? "transform translate-x-0 ease-in duration-300"
         : "transform translate-x-full easy-out duration-300"
     }  
-    grow
-    sm:absolute z-20
+    grow z-20
     transition-transform
     sm:fixed sm:top-0 sm:h-screen xl:w-1/5 lg:w-1/4 md:w-1/3 sm:w-1/2 sm:right-0
   `;
@@ -51,7 +50,7 @@ const ProfilSlide: React.FC<ProfileSlideProps> = ({
       <div className={buttonClasses}>
         <Button onClick={onClose}>X</Button>
       </div>
-      <div className="bg-slate-800 relative flex h-full w-full flex-col overflow-y-auto overflow-x-hidden p-6 sm:z-25">
+      <div className="bg-slate-800 flex h-full w-full flex-col overflow-y-auto overflow-x-hidden p-6 sm:z-25">
         <div className="mt-8 grow">
           <div className="text-xl font-bold">{profile.username}</div>
         </div>

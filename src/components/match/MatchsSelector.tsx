@@ -58,7 +58,7 @@ const MatchsSelector = () => {
       ))
     : "NoData";
 
-  const matchsDiv = (
+  return (
     <>
       <RoundSelector
         onChange={onChange}
@@ -68,10 +68,6 @@ const MatchsSelector = () => {
       />
       {isMatchLoading ? onLoadingDiv : roundMatchs}
     </>
-  );
-
-  return (
-    <div className="max-w-5xl xl:mx-auto my-32 mx-10 md:mx-20">{matchsDiv}</div>
   );
 };
 
