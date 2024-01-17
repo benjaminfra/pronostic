@@ -43,6 +43,17 @@
             "link": "Don't remember my password"
         }
     },
+    "Leagues": {
+        "Form": {
+            "name": {
+                "label": "League name",
+                "error": "The name is required"
+            },
+            "submit": {
+                "error": "Not all fields are valid"
+            }
+        }
+    },
     "Pronostic": {
         "round": "J-{{roundNumber}}",
         "noDate": "No date yet"
@@ -70,6 +81,9 @@
             },
             "send": {
                 "title": "Send"
+            },
+            "create": {
+                "title": "Create"
             }
         },
         "or": "Or"
