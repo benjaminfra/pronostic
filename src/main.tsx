@@ -12,6 +12,7 @@ import SignIn from "./pages/auth/SignIn.tsx";
 import ResetPassword from "./pages/auth/ResetPassword.tsx";
 import "./index.css";
 import MatchBoard from "./pages/match/MatchBoard.tsx";
+import MyLeagues from "./pages/leagues/MyLeagues.tsx";
 i18n;
 
 const router = createBrowserRouter([
@@ -43,6 +44,10 @@ const router = createBrowserRouter([
       {
         path: "pronostic",
         element: <MatchBoard />,
+      },
+      {
+        path: "leagues",
+        element: <MyLeagues />,
       },
     ],
   },

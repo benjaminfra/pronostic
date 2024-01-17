@@ -1,44 +1,29 @@
 import FormLabel from "@/components/form/FormLabel";
 import Input from "@/components/form/Input";
 
-type InputValidation = {
-  minLength: number;
-};
-
 type InputLabelProps = {
   label: string;
-  id: string;
-  type: string;
-  value: string;
-  onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
   errorMsg: string;
-  validation?: InputValidation;
-  autoComplete?: string;
-};
+} & React.InputHTMLAttributes<HTMLInputElement>;
 
 const InputWithLabel: React.FC<InputLabelProps> = ({
   label,
-  id,
-  type,
-  value,
-  onChange,
   errorMsg,
-  validation,
-  autoComplete,
+  ...props
 }) => {
   return (
     <div>
-      <FormLabel dataTest={`${id}-label`}>{label}</FormLabel>
+      <FormLabel dataTest={`${props.id}-label`}>{label}</FormLabel>
       <div className="mt-2">
         <Input
-          dataTest={`${id}-input`}
-          type={type}
-          id={id}
-          value={value}
-          onChange={onChange}
+          dataTest={`${props.id}-input`}
+          type={props.type}
+          id={props.id}
+          value={props.value}
+          onChange={props.onChange}
           errorMsg={errorMsg}
-          minLength={validation?.minLength}
-          autoComplete={autoComplete}
+          minLength={props.minLength}
+          autoComplete={props.autoComplete}
         />
       </div>
     </div>

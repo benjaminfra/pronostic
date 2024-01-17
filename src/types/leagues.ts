@@ -1,7 +1,10 @@
-export type NewLeague = {
+export type LeagueData = {
   name: string;
-  author_id: string;
 };
+
+export type NewLeague = {
+  author_id: string;
+} & LeagueData;
 
 export type League = {
   id: number;

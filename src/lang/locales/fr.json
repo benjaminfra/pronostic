@@ -43,6 +43,17 @@
             "link": "Mot de passe oublié ?"
         }
     },
+    "Leagues": {
+        "Form": {
+            "name": {
+                "label": "Nom de la ligue",
+                "error": "Le nom est obligatoire"
+            },
+            "submit": {
+                "error": "Tous les champs ne sont pas valides"
+            }
+        }
+    },
     "Pronostic": {
         "round": "J-{{roundNumber}}",
         "noDate": "Date non définie"
@@ -70,8 +81,11 @@
             },
             "send": {
                 "title": "Envoyer"
+            },
+            "create": {
+                "title": "Créer"
             }
-        },
-        "or": "Ou"
-    }
+        }
+    },
+    "or": "Ou"
 }

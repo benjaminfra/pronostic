@@ -17,7 +17,11 @@ const Menu = () => {
         <MenuItem icon={<Ball />} link="/pronostic" name={t("Menu.play")} />
       </div>
       <div className="max-md:flex-1">
-        <MenuItem icon={<UserGroup />} link="/" name={t("Menu.leagues")} />
+        <MenuItem
+          icon={<UserGroup />}
+          link="/leagues"
+          name={t("Menu.leagues")}
+        />
       </div>
       <div className="max-md:flex-1">
         <MenuItem icon={<Trophy />} link="/" name={t("Menu.ranking")} />
