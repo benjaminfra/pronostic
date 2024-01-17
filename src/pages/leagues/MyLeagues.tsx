@@ -1,9 +1,10 @@
+import MyLeaguesBoard from "@/components/leagues/MyLeaguesBoard";
 import LeagueProvider from "@/provider/LeagueProvider";
 
 const MyLeagues = () => {
   return (
     <LeagueProvider>
-      <div>MyLeagues</div>
+      <MyLeaguesBoard />
     </LeagueProvider>
   );
 };
