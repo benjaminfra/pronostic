@@ -9,6 +9,35 @@ export type Json =
 export interface Database {
   public: {
     Tables: {
+      leagues: {
+        Row: {
+          author_id: string
+          created_at: string
+          id: number
+          name: string
+        }
+        Insert: {
+          author_id: string
+          created_at?: string
+          id?: number
+          name: string
+        }
+        Update: {
+          author_id?: string
+          created_at?: string
+          id?: number
+          name?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "leagues_author_id_fkey"
+            columns: ["author_id"]
+            isOneToOne: false
+            referencedRelation: "profiles"
+            referencedColumns: ["user_id"]
+          }
+        ]
+      }
       matchs: {
         Row: {
           api_id: number | null
@@ -95,6 +124,42 @@ export interface Database {
             isOneToOne: true
             referencedRelation: "users"
             referencedColumns: ["id"]
+          }
+        ]
+      }
+      ref_leagues_users: {
+        Row: {
+          created_at: string
+          id: number
+          league_id: number
+          user_id: string
+        }
+        Insert: {
+          created_at?: string
+          id?: number
+          league_id: number
+          user_id: string
+        }
+        Update: {
+          created_at?: string
+          id?: number
+          league_id?: number
+          user_id?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "ref_leagues_users_league_id_fkey"
+            columns: ["league_id"]
+            isOneToOne: false
+            referencedRelation: "leagues"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "ref_leagues_users_user_id_fkey"
+            columns: ["user_id"]
+            isOneToOne: false
+            referencedRelation: "profiles"
+            referencedColumns: ["user_id"]
           }
         ]
       }

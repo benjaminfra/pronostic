@@ -3,7 +3,6 @@ import ReactDOM from "react-dom/client";
 import App from "./App.tsx";
 import AuthProvider from "./provider/AuthProvider.tsx";
 import i18n from "./lang";
-import ServiceProvider from "./provider/ServiceProvider.tsx";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import SignUp from "./pages/auth/SignUp.tsx";
 import ErrorPage from "./pages/error/ErrorPage.tsx";
@@ -52,9 +51,7 @@ const router = createBrowserRouter([
 ReactDOM.createRoot(document.getElementById("root")!).render(
   <React.StrictMode>
     <AuthProvider>
-      <ServiceProvider>
-        <RouterProvider router={router} />
-      </ServiceProvider>
+      <RouterProvider router={router} />
     </AuthProvider>
   </React.StrictMode>
 );

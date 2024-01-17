@@ -8,7 +8,7 @@ import Loader from "../loader/Loader";
 import AbsoluteCenter from "../layout/AbsoluteCenter";
 
 const MatchsSelector = () => {
-  const { getMatchsByRound, isMatchLoading } = useContext(MatchContext);
+  const { getMatchsByDateByRound, isMatchLoading } = useContext(MatchContext);
 
   const [roundMatchsByDate, setRoundMatchsByDate] = useState<
     { [date: string]: Match[] } | undefined
@@ -18,7 +18,7 @@ const MatchsSelector = () => {
 
   useEffect(() => {
     if (round) {
-      getMatchsByRound(round).then((data) => {
+      getMatchsByDateByRound(round).then((data) => {
         setRoundMatchsByDate(data);
       });
     }
