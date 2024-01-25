@@ -10,7 +10,7 @@ describe("EmailWithInput", () => {
         onChange={() => {}}
         type="password"
         value="1234"
-        validation={{ minLength: 8 }}
+        minLength={8}
       />
     );
     cy.getBySel("password-input").should("exist");

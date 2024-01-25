@@ -16,7 +16,7 @@ const PasswordInput = ({ value, onChange }: PasswordInputProps) => {
       onChange={onChange}
       type="password"
       value={value}
-      validation={{ minLength: 8 }}
+      minLength={8}
       autoComplete="current-password"
     />
   );
