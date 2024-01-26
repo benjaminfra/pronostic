@@ -8,11 +8,9 @@ const MyLeaguesBoard: React.FC = () => {
 
   return (
     <div className="grid grid-cols-3 gap-4">
-      <button>
-        <Card>
-          <p className="text-2xl font-bold">Nouvelle league</p>
-        </Card>
-      </button>
+      <Card border="border-dashed" textColor="white">
+        Nouvelle ligue
+      </Card>
       {myLeagues.map((league) => (
         <LeagueCard key={league.id} league={league} />
       ))}
