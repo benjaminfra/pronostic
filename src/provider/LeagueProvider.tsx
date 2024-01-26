@@ -1,6 +1,6 @@
 import { League, LeagueData } from "@/types/leagues";
-import { createContext, useContext, useState } from "react";
-import { createLeague } from "@/services/leagues";
+import { createContext, useContext, useEffect, useState } from "react";
+import { createLeague, getMyLeagues } from "@/services/leagues";
 import { AuthContext } from "./AuthProvider";
 import { verifyLoggedUser } from "@/utils/ProfileUtils";
 
@@ -23,6 +23,23 @@ const LeagueProvider: React.FC<{ children: React.ReactNode }> = ({
   const [myLeagues, setMyLeagues] = useState<League[]>([]);
 
   const { loggedUser } = useContext(AuthContext);
+
+  useEffect(() => {
+    const fetchData = async () => {
+      if (loggedUser) {
+        setIsLeaguesLoading(true);
+        try {
+          const author = verifyLoggedUser(loggedUser);
+          const leagues = await getMyLeagues(author.id);
+          setMyLeagues(leagues);
+        } finally {
+          setIsLeaguesLoading(false);
+        }
+      }
+    };
+
+    fetchData();
+  }, [loggedUser]);
 
   const createMyLeague = async (league: LeagueData) => {
     setIsLeaguesLoading(true);

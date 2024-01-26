@@ -44,7 +44,7 @@
         }
     },
     "Leagues": {
-        "Form": {
+        "form": {
             "name": {
                 "label": "League name",
                 "error": "The name is required"
@@ -52,6 +52,9 @@
             "submit": {
                 "error": "Not all fields are valid"
             }
+        },
+        "list": {
+            "create": "Create league"
         }
     },
     "Pronostic": {
@@ -84,6 +87,9 @@
             },
             "create": {
                 "title": "Create"
+            },
+            "close": {
+                "title": "Close"
             }
         },
         "or": "Or"

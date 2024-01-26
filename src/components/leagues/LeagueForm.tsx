@@ -5,7 +5,11 @@ import Button from "../button/Button";
 import { useTranslation } from "react-i18next";
 import ErrorAlert from "../alert/error/ErrorAlert";
 
-const LeagueForm: React.FC = () => {
+type LeagueFormProps = {
+  onSubmit: () => void;
+};
+
+const LeagueForm: React.FC<LeagueFormProps> = ({ onSubmit }) => {
   const { t } = useTranslation();
   const { createMyLeague, isLeaguesLoading } = useContext(LeagueContext);
   const [leagueName, setLeagueName] = useState<string>("");
@@ -17,6 +21,7 @@ const LeagueForm: React.FC = () => {
     createMyLeague({
       name: leagueName,
     });
+    onSubmit();
   };
 
   const updateLeagueName = (e: React.ChangeEvent<HTMLInputElement>) => {

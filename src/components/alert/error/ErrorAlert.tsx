@@ -7,7 +7,7 @@ const ErrorAlert: React.FC<{ description: string }> = ({ description }) => {
   const { t } = useTranslation();
 
   return (
-    <div className="border-solid rounded bg-rose-200 px-2 py-4 flex items-center">
+    <div className="border-solid rounded bg-red-500 px-2 py-4 flex items-center">
       <div className="px-1" data-test="alert-icon">
         <AlertErrorIcon />
       </div>
