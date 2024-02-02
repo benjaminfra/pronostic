@@ -18,7 +18,7 @@ const Card: React.FC<CardProps> = ({
     black: "text-black",
   };
   const animationStyle =
-    "lg:transition lg:ease-in-out lg:duration-300 lg:hover:-translate-y-1 lg:hover:scale-110";
+    "xl:transition xl:ease-in-out xl:duration-300 xl:hover:-translate-y-1 xl:hover:scale-110";
   const cardStyle = ` ${animationStyle} ${border} ${bgColor} border-2 border-white rounded-xl lg:h-80 h-56 p-20 flex justify-center items-center`;
   const textStyle = `${textColorVariants[textColor]} text-center text-2xl font-bold max-w-full max-h-full text-ellipsis overflow-hidden`;
   return (
