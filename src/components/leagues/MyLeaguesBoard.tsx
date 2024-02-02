@@ -11,8 +11,6 @@ import Loader from "../loader/Loader";
 const MyLeaguesBoard: React.FC = () => {
   const { myLeagues, isLeaguesLoading } = useContext(LeagueContext);
 
-  console.log(isLeaguesLoading);
-
   const [isOpen, setIsOpen] = useState<boolean>(false);
 
   const onCloseModal = () => {
