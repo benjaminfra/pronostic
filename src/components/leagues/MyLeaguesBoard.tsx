@@ -24,8 +24,8 @@ const MyLeaguesBoard: React.FC = () => {
     <>
       <NewLeagueModal isOpen={isOpen} onClose={onCloseModal} />
       <div className="lg:hidden"></div>
-      <div className="grid 2xl:grid-cols-3 lg:grid-cols-2 grid-cols-1 gap-6">
-        <div className="hidden lg:block">
+      <div className="grid 2xl:grid-cols-3 sm:grid-cols-2 grid-cols-1 sm:mx-0 mx-10 gap-6">
+        <div className="hidden sm:block">
           <Card border="border-dashed" textColor="white" onClick={openModal}>
             <p>{t("Leagues.list.create")}</p>
           </Card>
