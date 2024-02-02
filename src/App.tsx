@@ -4,6 +4,7 @@ import ProfileButton from "./components/profile/ProfileButton";
 import { AuthContext } from "./provider/AuthProvider";
 import Menu from "./components/menu/Menu";
 import PageContent from "./components/layout/PageContent";
+import Footer from "./components/footer/Footer";
 
 const App = () => {
   const { loggedUser, isUserLoading } = useContext(AuthContext);
@@ -14,6 +15,7 @@ const App = () => {
       <PageContent>
         <Outlet />
       </PageContent>
+      <Footer />
     </>
   );
 };

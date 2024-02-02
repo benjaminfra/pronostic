@@ -53,13 +53,15 @@ const ProfileButton: React.FC<ProfileButtonProps> = ({
       isProfileSlideOpen ? "translate-x-0 ease-out" : "translate-x-full ease-in"
     }`;
 
-  const profilSlideDivClasses = `${transitionClasses} h-full bg-slate-800 `;
+  const profilSlideDivClasses = `${transitionClasses} h-full bg-slate-800 ${
+    isProfileSlideOpen ? "" : "max-w-0"
+  }`;
 
   const mainDivClasses = isProfileSlideOpen
     ? "fixed inset-0 z-50 flex h-full w-full justify-end bg-black/80"
     : "";
 
-  const widthClasses = `grow md:fixed absolute top-0 h-screen right-0 ${
+  const widthClasses = `grow sm:fixed absolute top-0 h-screen right-0 ${
     isProfileSlideOpen
       ? "2xl:w-1/5 xl:w-1/4 lg:w-1/3 sm:w-2/3 max-sm:w-screen"
       : "w-0"

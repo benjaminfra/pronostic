@@ -34,12 +34,17 @@ const ProfilSlide: React.FC<ProfileSlideProps> = ({
     sm:left-0 sm:-translate-x-1/2
   `;
 
+  const panelClasses = `
+  ${isOpened ? "block" : "hidden"}
+  flex h-full w-full flex-col overflow-y-auto overflow-x-hidden p-6 sm:z-25
+  `;
+
   return (
     <div data-test="profile-slide">
       <div className={buttonClasses}>
         <Button onClick={onClose}>X</Button>
       </div>
-      <div className="flex h-full w-full flex-col overflow-y-auto overflow-x-hidden p-6 sm:z-25">
+      <div className={panelClasses}>
         <div className="mt-8 grow">
           <div className="text-xl font-bold">{profile.username}</div>
         </div>
