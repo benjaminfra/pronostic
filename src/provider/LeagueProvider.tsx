@@ -19,7 +19,7 @@ export const LeagueContext = createContext<ILeagueContext>({
 const LeagueProvider: React.FC<{ children: React.ReactNode }> = ({
   children,
 }) => {
-  const [isLeaguesLoading, setIsLeaguesLoading] = useState(false);
+  const [isLeaguesLoading, setIsLeaguesLoading] = useState(true);
   const [myLeagues, setMyLeagues] = useState<League[]>([]);
 
   const { loggedUser } = useContext(AuthContext);
@@ -27,7 +27,6 @@ const LeagueProvider: React.FC<{ children: React.ReactNode }> = ({
   useEffect(() => {
     const fetchData = async () => {
       if (loggedUser) {
-        setIsLeaguesLoading(true);
         try {
           const author = verifyLoggedUser(loggedUser);
           const leagues = await getMyLeagues(author.id);
@@ -37,7 +36,7 @@ const LeagueProvider: React.FC<{ children: React.ReactNode }> = ({
         }
       }
     };
-
+    setIsLeaguesLoading(true);
     fetchData();
   }, [loggedUser]);
 

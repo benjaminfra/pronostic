@@ -42,7 +42,7 @@ const NewLeagueModal: React.FC<NewLeagueModalProps> = ({ isOpen, onClose }) => {
                 &#8203;
               </span>
 
-              <div className="inline-block align-bottom bg-slate-800 rounded-lg text-left overflow-hidden shadow-xl transform transition-all sm:my-8 sm:align-middle lg:max-w-xl sm:w-full">
+              <div className="inline-block align-bottom bg-slate-800 rounded-lg text-left overflow-hidden shadow-xl transform transition-all sm:my-8 sm:align-middle md:max-w-xl w-full ">
                 <div className="px-4 pt-5 pb-4 sm:p-6 sm:pb-4">
                   <LeagueForm onSubmit={onClose} />
                 </div>

@@ -13,6 +13,7 @@ import ResetPassword from "./pages/auth/ResetPassword.tsx";
 import "./index.css";
 import MatchBoard from "./pages/match/MatchBoard.tsx";
 import MyLeagues from "./pages/leagues/MyLeagues.tsx";
+import League from "./pages/leagues/League.tsx";
 i18n;
 
 const router = createBrowserRouter([
@@ -48,6 +49,10 @@ const router = createBrowserRouter([
       {
         path: "leagues",
         element: <MyLeagues />,
+      },
+      {
+        path: "leagues/:id",
+        element: <League />,
       },
     ],
   },
