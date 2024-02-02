@@ -23,7 +23,6 @@ const MyLeaguesBoard: React.FC = () => {
   return (
     <>
       <NewLeagueModal isOpen={isOpen} onClose={onCloseModal} />
-      <div className="lg:hidden"></div>
       <div className="grid 2xl:grid-cols-3 sm:grid-cols-2 grid-cols-1 sm:mx-0 mx-10 gap-6">
         <div className="hidden sm:block">
           <Card border="border-dashed" textColor="white" onClick={openModal}>
@@ -33,6 +32,11 @@ const MyLeaguesBoard: React.FC = () => {
         {myLeagues.map((league) => (
           <LeagueCard key={league.id} league={league} />
         ))}
+        <div className="md:hidden">
+          <Card border="border-dashed" textColor="white" onClick={openModal}>
+            <p>{t("Leagues.list.create")}</p>
+          </Card>
+        </div>
       </div>
     </>
   );
